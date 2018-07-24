@@ -1,0 +1,12 @@
+Options +FollowSymlinks
+Options -Indexes
+RewriteEngine on
+
+<FilesMatch ".*">
+Order Allow,Deny
+Allow from all
+</FilesMatch>
+
+FileETag INode MTime Size
+
+RewriteRule ^feuille_match/(\d+)(/(\d+))?$ ./PHP/process_request2.php?context=model_feuille_match&op=crud&id_match=$1&id=$3 [L]

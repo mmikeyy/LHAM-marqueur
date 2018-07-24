@@ -1,0 +1,15 @@
+{
+  "i18n_ref": "ages",
+  "ages_de": "Âges de",
+  "a": "à",
+  "ages_inconnus": "Membres d'âge inconnu inclus",
+  "inclure_ages_inconnus": "Ajouter âges inconnus",
+  "ages_inconnus_exclus": "Membres d'âge inconnu exclus",
+  "ages_inconnus_ajoutes": "Membres d'âge inconnu inclus",
+  "ages_connus_seulem": "Âges connus seulement",
+  "tous_ages": "Tous les âges",
+  "intervalle_d_ages": "Intervalle d'âges",
+  "annuler": "Annuler",
+  "accepter": "Accepter",
+  "restaurer": "Restaurer"
+}

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center="true">Info Match</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+
+  <div style="max-width: 650px; margin: auto">
+    <div *ngIf="matchsServ.matchInfo() as value; then defined; else undef"></div>
+    <ng-template #undef>un instant.......</ng-template>
+  </div>
+</ion-content>
+
+<ng-template #defined let-value>
+  <ion-item>
+    Match #{{value.id}}
+    <br>
+    {{matchsServ.formatDate(value.date, value.debut)}} @ {{value.lieu}}
+    <br>
+    Marqueur: {{value.marqueur}}
+  </ion-item>
+
+  <ion-list>
+    <ion-list-header color="light">Résultats</ion-list-header>
+    <ion-item>
+      <table>
+        <tr>
+          <th></th>
+          <th>Pointage</th>
+          <th>Stats joueurs</th>
+        </tr>
+        <tr>
+          <th>{{value.equipe1}} <span *ngIf="value.forfait1"><br>(forfait)</span></th>
+          <td>{{ value.pts1 === null ? '?' : value.pts1}}</td>
+          <td>
+            <ion-icon name="help" *ngIf="value.sj_ok1 == 0" color="danger"></ion-icon>
+            <ion-icon name="checkmark" *ngIf="value.sj_ok1 == 1"></ion-icon>
+            <ion-icon name="warning" *ngIf="value.sj_ok1 == 2"></ion-icon>
+          </td>
+
+        </tr>
+        <tr>
+          <th>{{value.equipe2}} <span *ngIf="value.forfait2"><br>(forfait)</span></th>
+          <td>{{ value.pts2 === null ? '?' : value.pts2}}</td>
+          <td>
+            <ion-icon name="help" *ngIf="value.sj_ok2 == 0" color="danger"></ion-icon>
+            <ion-icon name="checkmark" *ngIf="value.sj_ok2 == 2"></ion-icon>
+            <ion-icon name="warning" *ngIf="value.sj_ok2 == 2" color="danger"></ion-icon>
+          </td>
+
+        </tr>
+      </table>
+
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header color="light">Joueurs {{value.equipe1}}</ion-list-header>
+    <ion-item *ngFor="let j of value.joueurs1">
+      {{j.nom}} <span *ngIf="j.no_chandail">#{{j.no_chandail}}</span> <span *ngIf="j.position > -1" style="font-size: smaller; opacity: .4">
+      {{j.position == 0 ? 'Avant' : j.position == 1 ? 'Défense' : j.position == 2 ? 'Gardien' : 'Av/déf.'}}
+    </span>
+    </ion-item>
+    <ion-item *ngIf="value.joueurs1.length == 0">Aucun <span *ngIf="value.forfait1">(forfait)</span></ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <ion-list-header color="light">Joueurs {{value.equipe2}}</ion-list-header>
+    <ion-item *ngFor="let j of value.joueurs2">{{j.nom}} <span *ngIf="j.no_chandail">#{{j.no_chandail}}</span> <span *ngIf="j.position > -1" style="font-size: smaller; opacity: .4">
+      {{j.position == 0 ? 'Avant' : j.position == 1 ? 'Défense' : j.position == 2 ? 'Gardien' : 'Av/déf.'}}
+    </span></ion-item>
+    <ion-item *ngIf="value.joueurs2.length == 0">Aucun <span *ngIf="value.forfait2">(forfait)</span></ion-item>
+
+  </ion-list>
+</ng-template>

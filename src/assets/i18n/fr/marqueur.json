@@ -1,0 +1,83 @@
+{
+
+
+  "moins_de_2_eq" : "Joueurs de moins de 2 équipes sur la feuille de match",
+  "plus_de_2_eq" : "Joueurs de plus de 2 équipes sur la feuille de match",
+  "equipe_fm_en_trop" : "La feuille de match réferre à une équipe non liée au match",
+  "joueurs_fm_en_trop" : "Joueurs non enregistrés pour ce match sur la feuille de match",
+  "probl" : "Problème!",
+
+  "equipes_saisons_diff" : "Match entre équipes de saisons différentes...",
+  "difference_resultats" : "Le résultat déjà entré pour ce match diffère de feuille de match.",
+  "divergence_resultats" : "Différence entre résultat selon buts enregistrés et résultat inscrit avec le dernier but",
+  "instructions_joueurs_en_trop" : "Allez au choix des joueurs pour ce match et assignez chacun d'entre eux à une équipe",
+
+  "probleme_ident_eq" : "Probl. identification eq.",
+  "buts_filet_vide" : "Buts marqués dans filet désert",
+  "buts_par_equipe" : "{nb} buts par {nom} ({nom_equipe})",
+  "aucun" : "Aucun",
+  "marque_equipe" : "{buts} -> {nom_equipe}",
+  "extraire_stats" : "Extraire les statistiques ci-dessus",
+  "difference_fm_stats_match" : "Des résultats ont déjà été enregistrés pour ce match, et ils diffèrent de ceux trouvés sur la feuille de match.",
+  "difference_instructions" : "Inscrivez les bons résultats pour le match, et vous pourrez ensuite extraire des statistiques concordant avec ces résultats.",
+  "resultats_enreg_match" : "Résultats enregistrés pour ce match",
+  "resultat_gardien_eq_introuvable" : "Résultat gardien associé à équipe non partie au match",
+  "fix_stats_adverses" : "Buts comptés par l'adversaire dans son propre filet. Les statistiques de la présente équipe seront valides quand celles de l'adversaire inclueront ces buts.",
+  "but_propre_filet" : "But dans son propre filet!",
+  "passe_propre_filet" : "Passe pour un but de l'équipe adverse!",
+  "gardien_mauvaise_equipe" : "Gardien de mauvaise équipe!",
+  "nouvelle_periode_evenement" : "Nouvelle période pour cet événement",
+  "choisir_equipe" : "Choisir une équipe",
+  "pointage_incorrect" : "Le pointage doit aller augmentant de 1 point par but (voir période {periode} chrono {chrono})",
+  "deux_passes_meme_joueur" : "Deux passes au même joueur!",
+
+
+
+  "erreur_resultats_equipe_forfait" : "Une équipe a perdu par forfait. Les résultats ne peuvent être changés. Utilisez la fonction de déclaration de forfait pour éliminer le forfait.",
+  "indiquez_avantage_num" : "Indiquez la situation de l'équipe qui a compté",
+  "avantage_num" : "Avantage num.",
+  "desavantage_num" : "Désavantage num.",
+  "ni_avantage_ni_desavantage" : "----------",
+  "changement_gardien" : "Chg gardien",
+  "changement_de_gardien" : "Changement de gardien",
+  "info_chg_gardien" : "Indiquez quels gardiens gardent les filets",
+  "erreur_gardiens_meme_eq" : "Les gardiens doivent être d'équipes différentes",
+  "titre_changement_gardien" : "Changement de gardien - Période {no_periode}",
+  "info_collecter_forfait" : "Aucune statistique à collecter quand une équipe perd par forfait.",
+  "un_gardien_par_eq_minimum" : "Il doit y avoir au moins un gardien par équipe",
+  "aucun_gardien" : "Aucun gardien",
+  "err_temps_gardien_titre" : "Problème de détermination du temps de glace des gardiens",
+  "err_temps_gardien_intro" : "Le calcul ne peut être fait pour la raison suivante:",
+  "temps_devant_filet" : "Temps devant le filet",
+  "gardien_temps" : "{min} minutes {sec} secondes pour {nom}",
+  "temps_filet_desert_jamais" : "{nom_equipe} : filet jamais déserté.",
+  "temps_filet_desert" : "{nom_equipe}: filet désert pendant {minutes} minutes {secondes} secondes.",
+  "aucun_but" : "Aucun but",
+
+
+
+
+
+  "aucun_even ": "Aucun événement encore enregistré",
+  "dernier_even ": "Dernier événement enregistré à %s",
+  "fin_per_introuvable ": "Fin de période introuvable",
+  "evenement_post_enreg ": "Un événement postérieur à cette valeur de chrono a été enregistré",
+  "effacer_even_per ": "Effacer d'abord les autres événements de la période",
+  "une_seule_fusillade": "Une seule fusillade par match",
+  "fusillade_remportee_par": "remportée par: {nom_equipe}",
+  "ronde_no": "Ronde #{no}",
+  "obtenir_details": "Obtenir détails",
+  "aucun_detail": "Aucun détail",
+  "fusillade_remportee_par_titre": "Fusillade remportée par",
+  "a_determiner": "À déterminer",
+  "note_ajustement_marque": "Note: les boutons changent le pointage de l'équipe choisie plus haut",
+  "note_fusillade": "Pour entrer les détails de la fusillade, retournez à la feuille de match et choisissez \"Éditer détails\" dans le menu contextuel du bloc 'Fusillade'",
+  "premiere_ronde_1": "Les premiers tirs doivent appartenir à la ronde no 1",
+  "ronde_non_num": "No de ronde non numérique",
+  "ronde_doit_augmenter": "Le no de ronde ne peut diminuer d'un tir à l'autre",
+  "ronde_augm_max_1": "Le no de ronde doit être stable, ou augmenter de 1",
+  "manque_joueur": "Joueur non spécifié",
+  "effacera_resultat_final": "Effacer résultat final, mais pas la feuille de match. Le résultat final pourra être déterminé par la feuille de match",
+  "pas_de_fin_de_periode": "Pas de fin de période pour la période choisie (no {periode})",
+  "chrono_depasse_fin_nouvelle_per": "Valeur de chrono ({chrono}) dépasse chrono de fin de la période choisie ({chrono_per})"
+}

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Durée de la période {{fmServ.periodeChoisie}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content *ngIf="periodeOK; else pas_ok">
+
+  <div style="max-width: 650px; margin: auto">
+    <ion-list text-center>
+      <span style="font-size: larger; font-weight: bold">{{minutes}}:{{secondes < 10 ? '0' : ''}}{{secondes}}</span>
+    </ion-list>
+    <ion-list>
+      <ion-list-header color="light">
+        Ajustez les minutes
+      </ion-list-header>
+      <ion-range [min]="10" [max]="45" [(ngModel)]="minutes"></ion-range>
+    </ion-list>
+    <ion-list>
+      <ion-list-header color="light">
+        Ajustez les secondes
+      </ion-list-header>
+      <ion-range [min]="0" [max]="59" [(ngModel)]="secondes"></ion-range>
+    </ion-list>
+    <ion-item text-center *ngIf="minimumSecondes">
+      <span *ngIf="minimumSecondes" [class.erreur]="minutes * 60 + secondes <= minimumSecondes">Valeur minimum = {{minimumChrono}}</span>
+    </ion-item>
+    <button ion-item text-center
+            [disabled]="minutes * 60 + secondes <= minimumSecondes"
+            (click)="soumettre()"
+    >
+      <ion-icon name="checkmark"></ion-icon>
+      Soumettre
+    </button>
+
+  </div>
+</ion-content>
+
+<ng-template #pas_ok>
+  <ion-content>
+    <div style="max-width: 650px; margin: auto">
+      <ion-item text-center text-wrap>
+        {{aucunePeriode ? 'Aucune période désignée' : 'Fin de période précédente non définie'}}
+      </ion-item>
+    </div>
+  </ion-content>
+</ng-template>

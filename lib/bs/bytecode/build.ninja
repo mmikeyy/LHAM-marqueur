@@ -1,0 +1,30 @@
+bs_package_flags = -bs-package-name NameOfLibrary
+src_root_dir = F:\www\io\myapp
+bsc = F:\www\io\myapp\node_modules\bs-platform\lib\bsc.exe
+bsb_helper = F:\www\io\myapp\node_modules\bs-platform\lib\bsb_helper.exe
+warnings = -w -30-40+6+7+27+32..39+44+45+101
+bsc_flags = -bs-D BSB_BACKEND="bytecode" -nostdlib -I "F:\www\io\myapp\node_modules\bs-platform\lib\ocaml" -no-alias-deps -color always
+ppx_flags = 
+bs_package_includes = 
+bs_package_dev_includes = 
+namespace = 
+bsb_dir_group = 0
+ocaml_flags = -thread   -no-alias-deps   -color   always
+bs_super_errors_ocamlfind = -bs-super-errors
+bs_super_errors = -bs-super-errors
+external_deps_for_linking = 
+ocamlc = F:\www\io\myapp\node_modules\bs-platform\vendor\ocaml\ocamlc.opt
+ocamlopt = F:\www\io\myapp\node_modules\bs-platform\vendor\ocaml\ocamlopt.opt
+ocamlfind = 
+ocamlfind_dependencies = 
+ocaml_dependencies = -add-ocaml-dependency bigarray -add-ocaml-dependency dynlink -add-ocaml-dependency nums -add-ocaml-dependency str -add-ocaml-dependency threads -add-ocaml-dependency unix
+open_flag = 
+bsb_helper_verbose = 
+bsc_lib_includes = -I F:\www\io\myapp\node_modules\bs-platform\vendor\ocaml\lib\ocaml
+rule linking_bytecode
+  command = ${bsb_helper} ${bsb_helper_verbose} ${ocaml_dependencies} ${warnings} ${namespace} -bs-main ${main_module} ${bs_super_errors} ${static_libraries} ${ocamlfind_dependencies} ${external_deps_for_linking} ${in} -link-bytecode ${out}
+  description = Building ${out}
+build index.byte.exe : linking_bytecode 
+  main_module = Index
+  static_libraries = 
+build build.ninja : phony 

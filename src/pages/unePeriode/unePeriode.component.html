@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Match #{{idMatch}}; Période {{fmServ.periodeChoisie}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <div style="max-width: 650px; margin: auto">
+    <div style="font-size: small; text-align: center" *ngIf="editable">Glissez la bande titre d'un élément vers la gauche pour menu</div>
+    <ng-container *ngFor="let ev of $fm | async">
+
+      <ng-container *ngIf="ev.get('periode') == fmServ.periodeChoisie">
+
+        <ng-container [ngSwitch]="ev.get('type_enreg')">
+          <fm-but *ngSwitchCase="'but'" [ev]="ev" [editable]="editable"></fm-but>
+          <fm-punition *ngSwitchCase="'punition'" [ev]="ev" [editable]="editable"></fm-punition>
+          <fm-fin-periode *ngSwitchCase="'fin_periode'" [ev]="ev" [editable]="editable"></fm-fin-periode>
+          <fm-changement-gardien *ngSwitchCase="'changement_gardien'" [ev]="ev" [editable]="editable"></fm-changement-gardien>
+
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <ion-grid>
+      <ion-row *ngIf="!editable" text-center>
+        Effacez d'abord les statistiques si vous désirez modifier la feuille de match
+      </ion-row>
+      <ion-row *ngIf="editable">
+        <ion-col><button ion-button full (click)="ajouterBut()">but</button></ion-col>
+        <ion-col><button ion-button full (click)="ajouterPunition()">punition</button></ion-col>
+        <ion-col><button ion-button full (click)="ajouterChangementGardien()">Chg Gardien</button></ion-col>
+        <ion-col><button ion-button full>Fusill.</button></ion-col>
+      </ion-row>
+      <ion-row *ngIf="editable">
+        <ion-col>
+
+          <ion-list>
+            <ion-item-sliding #anSlidingItem>
+              <ion-item>Avantages numériques <ion-icon float-end="" name="arrow-dropleft"></ion-icon></ion-item>
+              <ion-item-options>
+                <button ion-button icon-only (click)="showInfoAN()">
+                  <ion-icon name="information-circle"></ion-icon>
+                </button>
+                <button ion-button icon-only (click)="refreshAnDn()">
+                  <ion-icon name="refresh"></ion-icon>
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

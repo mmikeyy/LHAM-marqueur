@@ -1,0 +1,975 @@
+//@import '~@angular/material/core/theming/all-theme'
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+//@include md-core()
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+//$candy-app-primary: md-palette($md-indigo)
+//$candy-app-accent:  md-palette($md-pink, A200, A100, A400)
+
+//// The warn palette is optional (defaults to red).
+//$candy-app-warn:    md-palette($md-red)
+//
+//// Create the theme object (a Sass map containing all of the palettes).
+//$candy-app-theme: md-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn)
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+//@include angular-material-theme($candy-app-theme)
+@import './template-variables.sass'
+
+@import "../../node_modules/bootstrap/scss/bootstrap"
+
+=centerer($horizontal: true, $vertical: true)
+  position: absolute
+  @if ($horizontal and $vertical)
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  @else if ($horizontal)
+    left: 50%
+    transform: translate(-50%, 0)
+  @else if ($vertical)
+    top: 50%
+    transform: translate(0, -50%)
+
+$small_width: 480px
+$medium_width: 620px
+$large_width: 1100px
+
+
+$small: "only screen and (max-width: #{$small_width})"
+$small_r: "only screen and (-webkit-max-device-pixel-ratio: 2) and (max-width: #{$small_width}),only screen and ( max--moz-device-pixel-ratio: 2) and (max-width: #{$small_width}),only screen and ( -o-max-device-pixel-ratio: 2/1) and (max-width: #{$small_width}),only screen and ( max-device-pixel-ratio: 2) and (max-width: #{$small_width}),only screen and ( max-resolution: 192dpi) and (max-width: #{$small_width}),only screen and ( max-resolution: 2dppx) and (max-width: #{$small_width})"
+$medium: "only screen and (min-width: #{$small_width + 1px})"
+$medium_r: "only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: #{$small_width + 1px}),only screen and ( min--moz-device-pixel-ratio: 2) and (min-width: #{$small_width + 1px}),only screen and ( -o-min-device-pixel-ratio: 2/1) and (min-width: #{$small_width + 1px}),only screen and ( min-device-pixel-ratio: 2) and (min-width: #{$small_width + 1px}),only screen and ( min-resolution: 192dpi) and (min-width: #{$small_width + 1px}),only screen and ( min-resolution: 2dppx) and (min-width: #{$small_width + 1px})"
+$medium_large: "only screen and (min-width: #{$medium_width})"
+$medium_large_r: "only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: #{$medium_width}),only screen and ( min--moz-device-pixel-ratio: 2) and (min-width: #{$medium_width}),only screen and ( -o-min-device-pixel-ratio: 2/1) and (min-width: #{$medium_width}),only screen and ( min-device-pixel-ratio: 2) and (min-width: #{$medium_width}),only screen and ( min-resolution: 192dpi) and (min-width: #{$medium_width}),only screen and ( min-resolution: 2dppx) and (min-width: #{$medium_width})"
+$large: "only screen and (min-width: #{$large_width})"
+$large_r: "only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: #{$large_width}),only screen and ( min--moz-device-pixel-ratio: 2) and (min-width: #{$large_width}),only screen and ( -o-min-device-pixel-ratio: 2/1) and (min-width: #{$large_width}),only screen and ( min-device-pixel-ratio: 2) and (min-width: #{$large_width}),only screen and ( min-resolution: 192dpi) and (min-width: #{$large_width}),only screen and ( min-resolution: 2dppx) and (min-width: #{$large_width})"
+
+$max_small: "only screen and (max-width: #{$small_width})"
+$max_medium: "only screen and (max-width: #{$medium_width})"
+$max_large: "only screen and (max-width: #{$large_width})"
+
+$retina:    "only screen and (-webkit-min-device-pixel-ratio: 2),only screen and ( min--moz-device-pixel-ratio: 2),only screen and ( -o-min-device-pixel-ratio: 2/1),only screen and ( min-device-pixel-ratio: 2),only screen and ( min-resolution: 192dpi),only screen and ( min-resolution: 2dppx)"
+$retina4:  "only screen and (-webkit-min-device-pixel-ratio: 3),only screen and ( min--moz-device-pixel-ratio: 3),only screen and ( -o-min-device-pixel-ratio: 3/1),only screen and ( min-device-pixel-ratio: 3),only screen and ( min-resolution: 250dpi),only screen and ( min-resolution: 3dppx)"
+//
+//$font_size: 14px
+
+//
+//$fixed_width: 1100px
+//$footer_height: 100px
+//$header_height: 145px
+//
+//$dark: #172124
+//$dark_selected: #233033
+//$dark_hover: #2a3a3d
+//$dark_light_background: #5d7676
+//$dark_color: #c6ccd4
+
+/* ;lsaklf sakdfs;ldak
+  asf sad jsadlkj slide
+  ccccccccccccccccccccccccccccccccccccc
+
+@function my-breakpoint-max($name, $breakpoints: $grid-breakpoints)
+  $next: breakpoint-next($name, $breakpoints)
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null)
+
+@mixin my-media-breakpoint-down($name, $breakpoints: $grid-breakpoints)
+  $val: map-get($breakpoints, $name)
+  @media (max-width: $val - 1px)
+    @content
+
+
+
+@each $breakpoint in map-keys($grid-breakpoints)
+  .hidden-#{$breakpoint}-down
+    @include my-media-breakpoint-down($breakpoint)
+      display: none!important
+  .hidden-#{$breakpoint}-up
+    @include media-breakpoint-up($breakpoint)
+      display: none!important
+html
+  height: 100%
+  top: 0
+  margin: 0
+  padding: 0
+  font-size: $font_size
+
+@mixin retina
+  @media #{$retina}
+    @content
+
+@mixin retina4
+  @media #{$retina4}
+    @content
+
+
+@media #{$retina}
+  html
+    font-size: $font_size
+  div.retina:not(.retina-r4)
+    background-color: red
+    div.font
+      background-color: black
+      color: white
+      &::after
+        content: "font size x 3.25"
+
+  @include media-breakpoint-up(sm)
+    div.font
+      background-color: black
+      color: white
+      &::after
+        content: "font size x 2.5"
+
+  @include media-breakpoint-up(md)
+    div.font
+      background-color: black
+      color: white
+      &::after
+        content: "font size x 2"
+
+  @include media-breakpoint-up(lg)
+    div.font
+      background-color: grey
+      color: white
+
+@media #{$retina4}
+  div.retina-r4
+    background-color: greenyellow!important
+  html
+    font-size: $font_size
+    @media (orientation: landscape)
+      font-size: $font-size
+
+
+
+//#{login-status}
+//  right: 0
+//  background-color: transparent
+//  color: whitesmoke
+//  visibility: inherit
+//  a
+//    cursor: pointer
+//    font-size: small
+//    color: whitesmoke
+
+@include my-media-breakpoint-down(sm)
+  div.small
+    background-color: green
+  @include retina
+    div.small-r
+      background-color: green
+@include media-breakpoint-up(md)
+  div.medium
+    background-color: green
+  @include retina
+    div.medium-r
+      background-color: green
+@include media-breakpoint-up(lg)
+  div.medium-large
+
+    background-color: green
+  @include retina
+    div.medium-large-r
+      background-color: green
+@include media-breakpoint-up(fw)
+  div.large
+    background-color: green
+  @include retina
+    div.large-r
+      background-color: green
+
+
+
+
+div.login-area
+  text-align: right
+div.sub-menu-status
+  height: 25px
+  border: inset 3px #393935
+  background-color: #0a0a0a
+  color: #7c7c7c
+body
+  height: 100%
+  top: 0
+  padding: 0
+  margin: 0
+  text-align: left
+  color: black
+  //font-size: 1em!important
+
+  div.fond-fonce
+    color: #888
+  a
+    cursor: pointer
+    &:hover
+      text-decoration: underline
+
+button
+  border-radius: 3px
+  border: 1px solid #794147
+  padding: 4px
+  background-color: #cd2d4c
+  height: auto
+  color: white
+  &:hover
+    background-color: #ff3654
+    color: #ffeeb2
+  &:active
+    background-color: red
+    color: white
+  &.submit
+    background-color: #4fa744
+  &.disabled, &[disabled]
+    background-color: #b5a0a8
+    color: #8c8d90
+    opacity: .35
+
+.bas
+  clear: both
+
+.overlay
+  z-index: 99
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: black
+  opacity: 0.30
+
+#{p-dialog}
+  height: auto
+  //
+  //footer
+  //  position: absolute
+  //  padding: 10px
+  //  bottom: 0
+  //  width: calc(100% - 50px)
+  //  background-color: white
+  //  border-top: 1px solid #eee
+  //
+  //footer button
+  //  float: right
+  //  margin: 5px
+
+  div.wrapper
+
+    padding: 10px 10px 50px 10px
+
+.err
+  font-size: smaller
+  color: red !important
+
+p-inputMask.ng-invalid input
+  border-bottom: solid 1px #cd2d4c !important
+
+.erreur
+  background-color: #ff7d82
+  border: solid red 1px
+  color: white
+  font-weight: bold
+  border-radius: 4px
+  box-shadow: 4px 4px 4px #bcbcbc
+  text-align: center
+  padding: 2px
+  margin: .4rem
+
+div.contenu-row
+  margin: .7rem
+  border-radius: .7rem
+  border: black solid 1px
+  background-color: #dbe0de
+
+div.ads
+  position: absolute
+  top: 0
+  left: calc(100% - 10px)
+  display: block
+
+.ptr
+  cursor: pointer
+
+.hidden
+  visibility: hidden
+.display-none
+  display: none
+
+.red
+  color: red
+
+.mr10
+  margin-right: .7rem
+
+table.no_borders
+  border: none
+  th, td
+    border: none
+
+div.ui-breadcrumb.ui-widget.ui-widget-header, div.ui-breadcrumb.ui-widget.ui-widget-header li
+  background-color: transparent !important
+  background-image: none !important
+  border: none !important
+  &, a:not(:hover)
+    color: grey !important
+
+.center
+  text-align: center
+
+div.ui-grid-row.footer-row
+  width: 100%
+#{page-footer}
+  width: 100%
+
+div.navbar-fixed-top
+  width: $fixed_width
+  margin: auto
+  z-index: 10
+
+div.layout5, div.layout4
+  div.page-main
+    width: 100%
+    @include media-breakpoint-up(fw)
+      width: $fixed_width
+      margin: auto
+
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+    &.toolbar div.page-header
+      height: $sub-toolbar-header-height
+
+    div.page-header:not(.sections3)
+      height: $header_height
+    div.page-menu
+      min-height: 30px
+      height: auto
+      & *
+        background-color: #211615
+        color: white
+        border: none
+      color: white
+    //#{page-footer}
+    //  width: 100%
+    div.page-footer
+      display: block
+      height: $footer_height
+      width: 100%
+      @include media-breakpoint-up(fw)
+        width: $fixed_width
+
+      &, a, a:visited
+        color: #aaaaaa!important
+      a
+        text-decoration: underline
+      div.ui-grid-row.ui-grid
+        width: 100%
+
+
+div.layout6
+  div.page-main, div.page-footer, div.page-header
+    width: 100%
+    @include media-breakpoint-up(fw)
+      width: $fixed_width
+  div.page-main
+    margin: auto
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+
+    div.page-menu
+      min-height: 30px
+      height: auto
+      & *
+        background-color: #211615
+        color: white
+        border: none
+      color: white
+    //#{page-footer}
+    //  width: 100%
+    div.page-footer
+      display: block
+      &, a, a:visited
+        color: #aaaaaa!important
+      a
+        text-decoration: underline
+      div.ui-grid-row.ui-grid
+        width: 100%
+
+div.layout6
+  div.page-content
+    background-color: transparent
+    flex: 1 1 auto
+    align-self: stretch
+    display: flex
+    flex-direction: column
+  div.page-header
+    height: auto
+    margin-top: $toolbar_height + $sub-toolbar-header-height
+    margin-bottom: 0
+    padding-bottom: 0
+  div.page-body
+    align-self: stretch
+    flex: 1 1 auto
+    background-color: #ffffff
+    padding-top: 1rem
+  div.page-header, div.page-footer
+    background-color: transparent
+
+
+body
+  background-color: black
+html.mobile_NO
+  background-color: black
+  button.fab
+    font-size: large
+    position: absolute
+    top: 5px
+    left: 5px
+  button.fab-right
+    font-size: large
+    position: absolute
+    top: 5px
+    right: .7rem
+
+  body
+    background-image: none
+    background-color: transparent
+    min-height: 100%
+  div.page-header
+    height: 63px!important
+    background-image: url(./images/banner_mobile_right_thin.png), url(./images/banner_mobile_left_thin.jpg)
+    background-position: 90% 0, 50px 0
+    background-repeat: no-repeat, no-repeat
+    background-attachment: scroll
+    background-color: black
+
+  div.page-main
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+  div.page-content
+    align-self: stretch
+    flex: 1 1 auto
+  .ui-tabview .ui-tabview-panel
+    padding-left: 0
+    padding-right: 0
+
+div.layout4
+  div.page-content
+    background-color: #ffffff
+    flex: 1 1 auto
+    align-self: stretch
+
+div.layout5
+  div.page-content
+    background-color: #ede3cb
+    flex: 1 1 auto
+    align-self: stretch
+
+    div.row-content
+
+      display: flex
+      flex-direction: row
+      div.col-gauche
+        //display: inline-block
+
+        flex: 1 1
+        align-self: stretch
+        z-index: 100
+
+        background-color: white
+        overflow-x: visible
+        @include media-breakpoint-up(fw)
+          max-width: 700px
+
+
+      div.col-droite
+        z-index: 99
+        flex: 0 0 400px
+        min-height: 100%
+        @include my-media-breakpoint-down(fw)
+          flex-basis: auto
+          max-width: 100%
+          margin: auto
+          > *
+            margin: auto
+
+div.mobile_NO
+  width: 100%
+  min-height: 100vh
+  background-color: white
+
+td.eq1
+  background: url(images/chandail_visiteur.png) right no-repeat
+
+td.eq2
+  background: url(images/chandail_local.png) right no-repeat
+
+tr.publicite
+  background-color: #aa7700
+
+.hover-ptr:hover
+  cursor: pointer
+
+.hover-ptr-souligne:hover
+  cursor: pointer
+  text-decoration: underline
+.souligne
+  text-decoration: underline
+
+//div.ui-dialog
+//
+//  #{footer}
+//    display: block
+//    text-align: right
+//    white-space: nowrap
+//    position: absolute
+//    bottom: 0
+//    padding: .7rem
+//    margin-top: .7rem
+//    width: calc(100% - 25px)
+
+div.dialog-body
+  display: block
+  padding: .7rem .7rem 0
+
+button
+  margin-left: .7rem
+
+div.table
+  display: table
+  div.row
+    display: table-row
+    div.cell
+      display: table-cell
+      &.header
+        font-weight: bold
+
+div.ui-menu.ui-widget.ui-widget-content:not(.ui-slidemenu)
+  width: auto !important
+
+a.ui-menuitem-link
+  white-space: nowrap
+  width: auto !important
+
+div.ui-dropdown-items-wrapper
+  white-space: nowrap
+
+div.ui-dropdown.ui-widget
+  width: auto !important
+
+div.ui-radiobutton.ui-widget
+  display: inline-block
+  vertical-align: middle
+
+li.ui-widget-header
+  white-space: nowrap
+  padding: 3px
+
+body.admin #{p-tieredmenu}
+
+  div.ui-tieredmenu
+    width: auto !important
+    display: inline-block
+    border-color: transparent
+    background-image: none
+
+    background-color: transparent !important
+    div, li, ul, a
+      background-image: none !important
+      min-width: 200px !important
+      background-color: transparent !important
+      font-size: 1.1rem
+      color: rgba(172, 182, 169, 0.93) !important
+      outline-color: transparent
+      border-color: transparent !important
+    a
+      width: 100% !important
+
+    li
+      &:first-of-type
+        border-top: #333 solid 3px !important
+      border-bottom: #333 solid 3px !important
+      border-right: #333 solid 1px !important
+      padding: 5px !important
+      margin-top: 3px
+
+body div
+  color: black
+
+.right
+  text-align: right
+
+.menu-bottom
+  div.mycontent
+    padding: .7rem
+
+  div.mymenu
+    padding: 0
+    & > div
+      display: block
+      padding: 4px
+      background-color: transparent
+      border-radius: 4px
+      border: solid #aaa 2px !important
+      &.hide-items *
+        visibility: hidden
+    a
+      margin-right: .7rem
+
+table.ui-datepicker-calendar
+  width: 100% !important
+
+table.input
+  height: auto
+  td, tr
+    padding: 5px
+
+.section-title
+  padding: 0
+  margin: 0
+  font-size: 1.5rem
+  font-weight: bold
+
+body #{p-panel}.section
+  header
+    display: inline-block !important
+  a.ui-panel-titlebar-toggler, a.ui-panel-titlebar-toggler.ui-state-hover
+    display: inline-block
+    position: relative
+    margin: 5px 20px !important
+    float: none
+    left: 0
+    top: 0
+
+.noselect
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.edit-marker
+  background-color: #b600b6
+  float: right
+  display: inline-block
+  height: auto
+  width: auto
+  color: white
+  padding: 1px
+  border-radius: 8px
+  box-shadow: 4px 4px .7rem #000
+  cursor: pointer
+
+div.ui-menu li.ui-widget-header h3
+  font-weight: bold
+  font-size: 1.15rem
+
+div.bandeau
+  border-radius: 5px
+  background-color: #4c4342
+  color: white
+  padding: 4px
+
+div.ui-tabview
+  position: static !important
+
+html body.admin, html body.edit_structure, html body.pub
+  &, .col-light
+    color: $dark_color
+    background-color: $dark
+    background-image: none
+    .selected:not(.pale)
+      background-color: $dark_selected
+    .selected.pale
+      background-color: #d4d5d8
+    input, textarea
+      color: #c4c4c4
+      background-color: black
+    .active
+      color: black
+
+  #{p-tabview}, #{p-panel}, div.ui-datepicker
+    a
+      color: $dark_color
+    .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover
+      background-color: #213336
+      border-color: white
+      color: white
+      &:not(.ui-chkbox-box)
+        border-top-left-radius: 7px
+        border-top-right-radius: 7px
+      a
+        border-top-left-radius: 7px
+        border-top-right-radius: 7px
+      &:hover
+        background-color: $dark_hover
+
+    .ui-datepicker-year
+      background-color: #1f1e1e
+    .ui-widget-content
+      background-color: $dark
+      color: #dcdcdc
+
+    .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited,a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button
+      color: whitesmoke
+      background-color: #0d1e22
+      border-color: #1f2a2d
+    button.ui-button
+      background-color: $dark_light_background
+      border-radius: 7px
+      border: 1px solid $dark_color
+      span.ui-button-text
+        background-color: transparent
+    .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus
+      color: white
+      background-color: black
+
+    .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited
+      color: $dark_color
+  .ui-chkbox-icon.ui-c.fa
+    padding: .25em .1em
+    &.fa-close
+      padding: .25em .25em
+  .ui-radiobutton-box
+    border-radius: 7px
+  #{p-selectbutton}
+    div.ui-button:not(.ui-state-active)
+      color: #888
+      background-color: black
+    div.ui-button.ui-state-active
+      background-color: #34484b
+      color: white
+  div.toolbar
+    background-color: black
+    min-height: 15px
+    padding: 5px
+    & > *
+      vertical-align: middle
+      margin: 0 15px
+      padding: 0
+    div.middle
+      text-align: center
+    div.right
+      text-align: right
+
+.col-light div.ui-widget-content
+  color: whitesmoke
+html body
+  div, span
+    color: inherit
+
+.shadow
+  box-shadow: #000 5px 5px 11px
+
+.debug-info
+  color: blue !important
+  background-color: #c1f3d4
+
+div.admin-main-page
+  .ui-menuitem-link.ui-state-hover
+    color: white !important
+    background-color: #111b1e !important
+  span.ui-chkbox-icon
+    color: white
+  .ui-chkbox
+    font-size: 1rem !important
+    .ui-state-active
+      background-color: black
+      border-color: grey
+  .ui-state-hover, .ui-state-focus
+    background-color: #1f1e1e
+    color: $dark_color
+    border-color: $dark_color
+  a.highlighted
+    font-weight: bold
+
+div.ui-dropdown-trigger span.fa.fa-caret-down
+  margin-left: -5px
+  margin-top: 8px
+
+.bold
+  font-weight: bold
+
+div.twitter_title
+  text-align: center
+  font-size: larger
+  border: inset 3px black
+  font-weight: bold
+  color: #fffefe
+  border-radius: 5px
+  background-color: #d40007
+  margin: 5px 0
+  padding: 3px
+
+a.ui-menuitem-link
+  white-space: nowrap
+
+.odd
+  background-color: #ffe8cd
+
+.fc-event.is-selected
+  background-color: #794147
+  color: white
+
+[hidden]
+  display: none
+
+.is-dispo
+  background-color: #797979
+  $index: 0
+  @each $col in $diff_col
+    &.ress#{$index}
+      $index: $index + 1
+      border-right: solid 4px $col
+      border-top: solid 2px $col
+*.is-alloc
+  background-color: nth($diff_col, 1)
+  color: nth($diff_textcol, 1)
+  $index: 1
+  @each $col in $diff_col
+    &.ress#{$index - 1}
+      background-color: $col!important
+      color: nth($diff_textcol, $index)!important
+      $index: $index + 1
+// donner au foreground la couleur habituelle du background (pour icones par exemple)
+*.is-alloc-col
+  $index: 1
+  @each $col in $diff_col
+    &.ress-col#{$index - 1}
+      $index: $index + 1
+      color: $col!important
+
+
+.fc-day-grid-event.pratique
+  border-right: 5px red solid
+.noselect
+  user-select: none
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+
+.fld_info
+  font-size: small
+  font-style: italic
+
+div.ui-dialog-buttonpane
+  border-radius: .7rem
+  button
+    float: right
+
+div.ui-dialog
+  box-sizing: border-box
+  box-shadow: .7rem .7rem .7rem #333
+
+div.ui-dialog-footer
+  border-bottom-left-radius: 5px
+  border-bottom-right-radius: 5px
+
+div.narrow.ui-tabview-left
+  & > .ui-tabview-nav
+    width: 100px
+  div.ui-tabview-panels
+    width: calc(100% - 100px)
+
+body.admin div.main div#contenu-courriel
+  background-color: white
+  padding: .7rem
+  border-radius: 5px
+  &, h1, h2, h3, h4
+    color: black
+
+div.page-component
+  width: $fixed_width
+  background-color: antiquewhite
+  padding: 15px
+  border-radius: .7rem
+  margin: $header_height auto
+  min-height: 50vh
+  border: 2px black inset
+  box-shadow: .7rem .7rem 1.4rem #666
+
+.theme-color-black
+  color: black!important
+.theme-color-white
+  color: white!important
+
+i.fa.fa-close.hidden-lg-down
+  color: red!important
+
+div.plainoverlay
+  height: 100vh!important
+  width: 100vw!important
+
+.ui-tabview .ui-tabview-panel
+  @include my-media-breakpoint-down(fw)
+    padding: .25rem .1rem
+
+div.photo_wrapper
+  border: solid 1px black
+  padding: 10px
+  height: auto
+  width: auto
+  border-radius: 8px
+div.LK-section.LK-section-photo, div.LK-section.LK-section-photo div
+  box-sizing: content-box!important
+
+table.std
+  th, .titre
+    background-color: #000
+    color: #fc0
+    border-radius: 9px
+    -moz-border-radius: 9px
+    -webkit-border-radius: 9px
+    height: auto
+    padding: 5px
+    margin: auto
+
+
+.simplebox
+  padding: 8px
+  margin: 10px
+  background: #eee
+  border-radius: 8px
+  border: 1px solid #ddd
+  box-shadow: 0 1px 1px #fff inset, 0 -1px 0px #ccc inset
+
+.simplebox-title, .simplebox-content
+  box-shadow: 0 1px 1px #ddd inset
+  border: 1px solid #cccccc
+  border-radius: 5px
+  background: #fff
+
+.simplebox-title
+  margin: 0 0 8px
+  padding: 5px 8px
+
+.simplebox-content
+  padding: 0 8px
+
+span.page-site
+  cursor: pointer
+.tt-courriel
+  white-space: nowrap
+  max-width: 250px
+body .ui-tabview .ui-tabview-panel
+  padding: .25rem
+
+td.ident_ahmba, th.ident_ahmba
+  background-image: url(../assets/images/logo_tres_petit.png)
+  background-position: right
+  background-repeat: no-repeat
+
+
+.ui-tabview-panels, .ui-tabview-panel
+  max-height: 100%

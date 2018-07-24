@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Choix d'un substitut</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Premières lettres du nom</ion-label>
+      <ion-input type="text" [(ngModel)]="nom"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ng-container *ngFor="let candidat of listeFiltree()">
+      <button ion-item clear *ngIf="filtrer(candidat)" (click)="info(candidat)">
+        {{candidat.nom}}
+      </button>
+    </ng-container>
+  </ion-list>
+
+</ion-content>

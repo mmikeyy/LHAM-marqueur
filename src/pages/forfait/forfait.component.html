@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Victoire par forfait - Match #{{idMatch}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="init()"><ion-icon name="refresh"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="max-width: 650px; margin: auto" *ngIf="idMatch">
+    <ion-item text-wrap>
+      <p><b>Victoire par forfait:</b></p>
+      <p>Quand une équipe seule équipe se présente pour un match, elle remporte la victoire par forfait. </p>
+
+      <p><b>Conditions nécessaires pour enregistrer le forfait</b></p>
+
+      <ul>
+        <li>Les joueurs présents de l'équipe victorieuse doivent être entrés comme s'ils avaient joué. </li>
+
+        <li>Aucun joueur de l'équipe perdante ne doit être marqué comme étant présent. </li>
+
+        <li>Aucun événement (but, passe, punition etc) ne doit être enregistré dans la feuille de match. </li>
+      </ul>
+
+    </ion-item>
+    <ion-item text-center>
+      <ion-badge *ngIf="initializing">Un instant <ion-icon name="refresh"></ion-icon></ion-badge>
+    </ion-item>
+    <ion-item *ngIf="erreurs.length" text-wrap>
+      <p><ion-icon name="warning" color="danger"></ion-icon> Les erreurs suivantes rendent impossible l'enregistrement d'une victoire par forfait:</p>
+      <ul>
+        <li *ngFor="let err of erreurs">{{err}}</li>
+      </ul>
+
+    </ion-item>
+    <button *ngIf="!forfait" ion-item  icon-start text-center [disabled]="initializing || erreurs.length" (click)="init(true)"><ion-icon name="checkmark" color="secondary"></ion-icon>Procéder</button>
+    <button *ngIf="forfait" ion-item icon-start text-center (click)="retirerForfait()"><ion-icon name="undo"></ion-icon>Retirer la victoire par forfait</button>
+  </div>
+</ion-content>

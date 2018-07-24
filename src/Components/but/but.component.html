@@ -1,0 +1,20 @@
+<ion-card>
+  <fm-titre-ev [ev]="ev" [editable]="editable" (clickMenu)="click($event)"></fm-titre-ev>
+  <div style="display: flex; justify-content: space-between; flex-direction: row">
+    <div>
+      <div>
+        {{matchsServ.nomEq(ev.get('id_equipe'))}}
+        <span style="margin-left: 2em" *ngIf="ev.get('avantage_numerique')">{{ev.get('avantage_numerique') > 0 ? 'Avantage numérique' : 'Désavantage numérique'}}</span>
+      </div>
+      <div>{{fmServ.nomJoueur(ev.get('id_membre')) || 'Marqueur manquant'}}</div>
+      <div *ngIf="ev.get('id_membre_passe')">Passe: {{fmServ.nomJoueur(ev.get('id_membre_passe'))}}</div>
+      <div *ngIf="ev.get('id_membre_passe2')">Passe: {{fmServ.nomJoueur(ev.get('id_membre_passe2'))}}</div>
+      <div *ngIf="ev.get('id_membre_gardien')">Gardien déjoué: {{fmServ.nomJoueur(ev.get('id_membre_gardien'))}}</div>
+      <div *ngIf="!ev.get('id_membre_gardien')">Filet vide</div>
+    </div>
+    <div style="text-align: right">
+      <div style="font-size: large">{{score()}}</div>
+      <div>{{nomEquipeEnAvance()}}</div>
+    </div>
+  </div>
+</ion-card>

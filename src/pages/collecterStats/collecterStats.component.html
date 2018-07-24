@@ -1,0 +1,252 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center="true">Collection des statistiques - match #{{idMatch}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="max-width: 650px; margin: auto">
+    <div *ngIf="mode === 'info'" style="margin: 2em">
+      <ion-item text-wrap>
+        <p>
+          Les STATISTIQUES DES JOUEURS seront extraites de la feuille de match.
+        </p>
+
+        <p>
+          Avant tout, assurez-vous de l'avoir remplie complètement.
+        </p>
+
+        <p>
+          Les avantages numériques et désavantage numériques seront attribués à chaque but au moment de la vérification
+          préalable à la compilation des statistiques.
+        </p>
+
+        <p>
+          La marque finale du match sera celle enregistrée avec le dernier but compté.
+        </p>
+
+        <p>
+          Si un résultat est déjà enregistré pour le match, il doit correspondre à celui de la feuille de match.
+        </p>
+
+        <p>
+          Seules des STATISTIQUES COMPLÈTES peuvent être extraites de la feuille de match:
+          chaque but doit être attribué à un joueur.
+        </p>
+
+        <p>
+          Notez que les statistiques extraites remplaceront les statistiques déjà
+          enregistrées pour le même match, s'il y en a.
+        </p>
+      </ion-item>
+      <button ion-item icon-start text-center color="secondary" (click)="collecterStats()">
+        <ion-icon name="search"></ion-icon>
+        Vérifier les données
+      </button>
+    </div>
+
+    <div *ngIf="mode === 'erreur_verif'">
+      <ion-list>
+        <ion-list-header text-center>
+          <ion-badge icon-start color="danger" round large>
+            <ion-icon name="warning"></ion-icon>
+            Échec
+          </ion-badge>
+        </ion-list-header>
+        <ion-item text-wrap>{{erreur.msg || 'Erreur inconnue'}}</ion-item>
+
+        <ng-container [ngSwitch]="erreur.type">
+
+          <ion-item *ngSwitchCase="'membres_en_trop'">
+            <ul>
+              <li *ngFor="let j of R.toPairs(erreur.liste)">
+                {{j[1].nom}}
+              </li>
+            </ul>
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'difference_fm_dernier_but'">
+            <table style="margin: auto">
+              <tr>
+                <th>Équipe</th>
+                <th>Feuille de match</th>
+                <th>Match</th>
+              </tr>
+              <tr *ngFor="let eq of R.toPairs(erreur.data_equipes)">
+                <td>{{eq[1].nom}}</td>
+                <td>{{ erreur.resultats_fm[eq[0]] }}</td>
+                <td>{{ erreur.resultats_inscrits[eq[0]] }}</td>
+              </tr>
+            </table>
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'difference_fm_resultat'">
+            <table style="margin: auto">
+              <tr>
+                <th>Équipe</th>
+                <th>Feuille de match</th>
+                <th>Match</th>
+              </tr>
+              <tr *ngFor="let eq of R.toPairs(erreur.data_equipes)">
+                <td>{{eq[1].nom}}</td>
+                <td>{{ erreur.resultats_fm[eq[0]] }}</td>
+                <td>{{ erreur.resultats_stats_match[eq[0]] }}</td>
+              </tr>
+            </table>
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'temps_gardien'" text-wrap>
+            <ion-icon name="arrow-right"></ion-icon> {{erreur.details}}
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'progression_pointage_incorrecte'" text-wrap>
+            Voyez le but enregistré dans les statistiques au chrono {{erreur.chrono}} de la période {{erreur.periode}}
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'temps_gardien'" text-wrap>
+            <ion-icon name="arrow-right"></ion-icon> {{erreur.details}}
+          </ion-item>
+
+
+
+        </ng-container>
+
+      </ion-list>
+
+    </div>
+
+    <div *ngIf="mode === 'verif_ok'">
+      <ion-list>
+        <ion-list-header color="light" text-center>Feuille de match validée</ion-list-header>
+
+        <ion-item text-center>
+          <div class="title">Buts</div>
+          <div class="content">
+            <ul>
+              <li *ngFor="let j of dataVerif.buts">
+                {{j.buts}} pour {{nomJoueur(j.id_membre)}}
+              </li>
+            </ul>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div class="title">Passes</div>
+          <div class="content">
+            <ul>
+              <li *ngFor="let j of dataVerif.passes">
+                {{j.passes}} pour {{nomJoueur(j.id_membre)}}
+              </li>
+            </ul>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div class="title">Minutes de punition</div>
+          <div class="content">
+            <ul>
+              <li *ngFor="let j of dataVerif.punitions">
+                {{j.duree_punition}} pour {{nomJoueur(j.id_membre)}}
+              </li>
+            </ul>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div class="title">Résultats gardiens</div>
+          <div class="content">
+            <ul>
+              <li *ngFor="let j of dataVerif.res_gardiens">
+                {{j.buts_contre}} buts contre {{nomJoueur(j.id_membre)}} ({{nomEquipe(j.id_equipe)}})
+              </li>
+            </ul>
+            <div style="margin: 1em; text-align: center">
+              Temps devant le filet
+            </div>
+            <ul>
+              <li *ngFor="let g of dataVerif.temps_gardiens">
+                <ng-container *ngTemplateOutlet="minSec; context: { sec: g[1] } "></ng-container> pour {{nomJoueur(g[0])}}
+              </li>
+            </ul>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div class="title">Buts marqués dans filet désert</div>
+          <div class="content">
+
+            <div style="margin-top: 1em" *ngFor="let eqData of dataVerif.buts_filet_vide">
+              Pour {{nomEquipe(eqData[0])}}
+              <ul>
+                <li *ngFor="let j of eqData[1]">
+                  {{j.buts_filet_vide}} but(s) marqué(s) par {{nomJoueur(j.id_membre)}}
+                </li>
+              </ul>
+
+            </div>
+            <div *ngIf="dataVerif.buts_filet_vide.length === 0">
+              Aucun but marqué dans filet désert
+            </div>
+            <hr>
+            <div *ngFor="let eqData of dataVerif.temps_filet_desert_eq">
+             {{nomEquipe((eqData[0]))}}: <span *ngIf="eqData[1]; else jamaisDesert">
+              filet désert pendant <ng-container *ngTemplateOutlet="minSec; context: { sec: eqData[1] } "></ng-container>
+            </span>
+            </div>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div class="title">Avantages / Désavantages numériques</div>
+          <div class="content">
+            <table>
+              <tr>
+                <th rowspan="2">Équipe</th>
+                <th colspan="2">Avantage</th>
+                <th colspan="2">Désavantage</th>
+              </tr>
+              <tr>
+                <th>Durée</th>
+                <th>Buts</th>
+                <th>Durée</th>
+                <th>Buts</th>
+              </tr>
+              <tr *ngFor="let data of dataVerif.compilation_avantages_num.data_equipes">
+                <td>{{nomEquipe(data.id_equipe)}}</td>
+                <td>
+                  <ng-container *ngTemplateOutlet="minSec; context: {sec: data.an.temps, abrev: true}"></ng-container>
+                </td>
+                <td>{{data.an.buts}}</td>
+                <td>
+                  <ng-container *ngTemplateOutlet="minSec; context: {sec: data.dn.temps, abrev: true}"></ng-container>
+                </td>
+                <td>{{data.dn.buts}}</td>
+              </tr>
+
+            </table>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div class="title">Marque finale</div>
+          <div class="content">
+            <div *ngIf="R.uniq(R.values(dataVerif.resultat_match)).length == 1; else templResultat">
+              Partie nulle {{R.join(' - ', R.values(dataVerif.resultat_match))}}
+            </div>
+          </div>
+        </ion-item>
+
+        <button ion-item color="secondary" text-center icon-start (click)="collecterStats(true)"><ion-icon name="checkmark"></ion-icon>Enregistrer les statistiques</button>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ng-template #jamaisDesert>Jamais déserté</ng-template>
+<ng-template #minSec let-sec="sec" let-abrev="abrev">{{floor(sec / 60)}}
+  min<ng-container *ngIf="!abrev">ute<ng-container *ngIf="sec >= 120">s</ng-container></ng-container>
+  <span *ngIf="sec % 60">{{sec % 60}} sec.</span>
+</ng-template>
+
+<ng-template #templResultat>
+  {{dataVerif.resultat_match[0][1] }} - {{dataVerif.resultat_match[1][1] }} {{nomEquipe(dataVerif.resultat_match[0][0])}}
+</ng-template>

@@ -7,11 +7,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="loggedIn">
     <ion-list-header>Follow us on Twitter</ion-list-header>
     <ion-item>
       <ion-icon name="ionic" item-start></ion-icon>
       @ionicframework
     </ion-item>
   </ion-list>
+  <button ion-button (click)="toto()" *ngIf="!loggedIn">Login</button>
+  <button ion-button  (click)="loggedIn=false" *ngIf="loggedIn" color="secondary">LogOut</button>
 </ion-content>

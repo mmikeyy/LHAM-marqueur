@@ -1,0 +1,9 @@
+<ion-card>
+  <fm-titre-ev [ev]="ev" [editable]="editable" (clickMenu)="click($event)"></fm-titre-ev>
+
+
+      <div>{{matchsServ.nomEq(ev.get('id_equipe'))}}</div>
+      <div>{{fmServ.nomJoueur(ev.get('id_membre')) || 'Marqueur manquant'}} -&gt; <b>{{ev.get('duree_punition') || '??'}} minutes</b></div>
+      <div>{{ev.get('codes_punition')}}</div>
+
+</ion-card>

@@ -1,0 +1,8 @@
+<ion-card>
+  <fm-titre-ev [ev]="ev" [editable]="editable" (clickMenu)="click($event)"></fm-titre-ev>
+
+
+  <div>{{fmServ.nomEquipe(fmServ.equipes[0].id)}}: {{fmServ.nomJoueur(ev.get('gardien1')) || 'Filet désert'}}</div>
+  <div>{{fmServ.nomEquipe(fmServ.equipes[1].id)}}: {{fmServ.nomJoueur(ev.get('gardien2')) || 'Filet désert'}}</div>
+
+</ion-card>

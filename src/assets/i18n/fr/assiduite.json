@@ -1,0 +1,9 @@
+{
+  "i18n_ref": "assiduite",
+  "events_presences": "Événements / présences",
+  "rapports": "Rapports",
+  "contexte_eq_manquant": "Le contexte ne suffit pas à définir l'équipe",
+  "info_assiduite": "Application pour prendre les présences aux matchs et aux pratiques, et conserver des statistiques d'assiduité pour chaque joueur tout au long de la saison",
+  "ouvrir": "Ouvrir",
+  "accepter": "Accepter"
+}

@@ -1,0 +1,53 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <ion-title text-center>Résultat du match</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center">
+    <div>Match #{{idMatch}}</div>
+    <div>{{matchsServ.matchDate(match)}}</div>
+    <div>{{matchsServ.nomArena(match.lieu)}}</div>
+  </div>
+  <ion-item>
+    {{matchsServ.nomEq(match.id_equipe1)}}
+    <ion-badge float-end>{{match.pts1 === null ? '-' : match.pts1}}</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-range [min]="0" [max]="25" [(ngModel)]="match.pts1" [snaps]="true"></ion-range>
+  </ion-item>
+  <ion-item>
+    {{matchsServ.nomEq(match.id_equipe2)}}
+    <ion-badge float-end>{{match.pts2 === null ? '-' : match.pts2}}</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-range [min]="0" [max]="25" [(ngModel)]="match.pts2" [snaps]="true"></ion-range>
+  </ion-item>
+  <ion-item>
+    <div style="text-align: center">
+      <button ion-button color="danger" (click)="match.pts1 = match.pts2 = null" *ngIf="match.pts1 !== null || match.pts2 !== null" icon-end [default]="true">
+        Effacer
+        <ion-icon name="close"></ion-icon>
+      </button>
+      <button ion-button color="secondary" (click)="accepter()" [disabled]="!(match.pts1 === null && match.pts2 === null || match.pts1 !== null && match.pts2 !== null)" icon-end [default]="true">
+        Accepter
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </div>
+
+  </ion-item>
+  <ion-item *ngIf="!videInit && match.pts1 === null && match.pts2 === null">
+    <div style="color: red; text-align: center" text-wrap>
+      Attention: en effaçant le pointage, vous effacez toute feuille de match entrée pour ce match
+    </div>
+  </ion-item>
+
+</ion-content>

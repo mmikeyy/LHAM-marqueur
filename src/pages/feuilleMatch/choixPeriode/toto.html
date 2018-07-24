@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Match #{{ $idMatch | async}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="refresh()"><ion-icon name="refresh"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="max-width: 650px; margin: auto">
+    <ion-list>
+      <button ion-item *ngFor="let p of periodes" (click)="choisir(p)">Période {{p}}</button>
+      <button ion-item (click)="ajouter()"></button>
+    </ion-list>
+
+  </div>
+</ion-content>
+
+<!--<ng-container *ngFor="let ev of $fm | async">-->
+
+<!--<fm-but *ngIf="ev.get('type_enreg') == 'but'" [ev]="ev"></fm-but>-->
+<!--<fm-fin-periode *ngIf="ev.get('type_enreg') == 'fin_periode'" [ev]="ev"></fm-fin-periode>-->
+<!--</ng-container>-->

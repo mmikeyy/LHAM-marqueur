@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>But Période {{fmServ.periodeChoisie}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content *ngIf="ev && form">
+
+  <div style="margin: auto; max-width: 650px" [formGroup]="form">
+
+      <button *ngIf="!editingChrono" ion-item text-center (click)="editingChrono = true"><ion-icon color="danger" name="warning" *ngIf="form.controls.chrono?.errors"></ion-icon> CHRONO: {{chrono}}</button>
+
+    <ion-item *ngIf="editingChrono">
+      <edite-chrono [chrono]="chrono" (chronoChange)="updateChronoCtrl($event)" [(display)]="editingChrono"></edite-chrono>
+
+    </ion-item>
+
+
+    <ng-container *ngIf="!editingChrono">
+      <ion-item>
+        <ion-label>But pour cette équipe:
+          <ion-icon color="danger" name="warning" *ngIf="form.controls.id_equipe.invalid"></ion-icon>
+        </ion-label>
+        <ion-select [formControlName]="'id_equipe'" interface="popover" (ionChange)="changed()">
+          <ion-option value>Faites un choix</ion-option>
+          <ion-option *ngFor="let eq of infoEquipes" [value]="eq.id">{{eq.nom}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-list>
+        <ion-list-header text-center color="light">Marque</ion-list-header>
+        <ion-item>
+          <ion-label>{{infoEquipes[0].nom}} <ion-icon color="danger" name="warning" *ngIf="form.controls.resultat.errors"></ion-icon></ion-label>
+          <ion-select [formControlName]="'resultat'" interface="popover">
+            <ion-option value="" *ngIf="form.value.resultat == ''">??</ion-option>
+            <ion-option *ngFor="let res of range" [value]="res">{{res}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{infoEquipes[1].nom}} <ion-icon color="danger" name="warning" *ngIf="form.controls.resultat_adversaire.errors"></ion-icon></ion-label>
+          <ion-select [formControlName]="'resultat_adversaire'" interface="popover">
+            <ion-option value="" *ngIf="form.value.resultat_adversaire == ''">??</ion-option>
+            <ion-option *ngFor="let res of range" [value]="res">{{res}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-label>Type de but</ion-label>
+        <ion-select [formControlName]="'but_special'" interface="popover">
+          <ion-option value [selected]="!ev.but_special ? 'selected' : ''">normal</ion-option>
+          <ion-option [value]="'penalite'" [selected]="ev.but_special == 'penalite' ? 'selected' : ''">pénalité
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ng-container
+              *ngTemplateOutlet="selectJoueur; context: {label: 'Marqueur', fld: 'id_membre', labelEmpty: 'À définir', gardien: false}"></ng-container>
+      <ng-container
+              *ngTemplateOutlet="selectJoueur; context: {label: 'Passe', fld: 'id_membre_passe', labelEmpty: 'Non attribuée', gardien: false}"></ng-container>
+      <ng-container
+              *ngTemplateOutlet="selectJoueur; context: {label: 'Passe', fld: 'id_membre_passe2', labelEmpty: 'Non attribuée', gardien: false}"></ng-container>
+      <ng-container
+              *ngTemplateOutlet="selectJoueur; context: {label: 'Gardien déjoué', fld: 'id_membre_gardien', labelEmpty: 'Filet vide', gardien: true}"></ng-container>
+
+      <button ion-item (click)="soumettre()" text-center [disabled]="form.invalid">
+        <ion-icon name="checkmark"></ion-icon>
+        Soumettre
+      </button>
+    </ng-container>
+
+    <ng-template #selectJoueur let-fld="fld" let-label="label" let-labelEmpty="labelEmpty" let-gardien="gardien">
+      <ion-item *ngIf="form">
+        <ion-label>{{label}} <ion-icon color="danger" name="warning" *ngIf="form.controls[fld].invalid"></ion-icon></ion-label>
+        <ion-select [formControlName]="fld" interface="popover">
+          <ion-option value="">{{labelEmpty}}</ion-option>
+
+
+            <ng-container *ngFor="let j of optionsJoueurs">
+              <ion-option *ngIf="gardien ? j.id_equipe != form.value['id_equipe'] && j.position == 2 : j.id_equipe == form.value['id_equipe']" [value]="j.id">{{j.nom}}
+              </ion-option>
+              <ion-option *ngIf="(gardien ? j.id_equipe == form.value['id_equipe'] || j.position != 2 : j.id_equipe != form.value['id_equipe']) && j.id == form.value[fld]" [value]="j.id">
+                !! -> {{j.nom}}
+              </ion-option>
+            </ng-container>
+
+        </ion-select>
+      </ion-item>
+    </ng-template>
+
+  </div>
+</ion-content>
+

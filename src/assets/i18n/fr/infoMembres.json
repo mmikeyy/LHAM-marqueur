@@ -1,0 +1,12 @@
+{
+  "i18n_ref": "infoMembres",
+  "id": "Id",
+  "courriel":"Courriel",
+  "nom": "Nom",
+  "prenom": "Prénom",
+  "age":"Âge",
+  "cell": "Cell",
+  "tel_jour": "Tél. jour",
+  "tel_soir": "Tél. soir",
+  "id_hcr": "No HCR"
+}

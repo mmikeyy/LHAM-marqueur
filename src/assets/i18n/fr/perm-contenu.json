@@ -1,0 +1,22 @@
+{
+  "i18n_ref": "perm-contenu",
+  "droits_sur_contenu": "Droits sur contenu pour éditeurs",
+  "annuler": "Annuler",
+  "droits_publier": "Droits de publication",
+  "droits_editer": "Droits d'édition",
+  "changer_droits": "Changer les droits",
+  "jusqu_a_fin_saison": "Édition et publication jusqu'à la fin de la saison courante",
+  "droit_editer": "Droit d'éditer",
+  "droit_publier": "Droit de publier",
+  "interdit_editer_publier": "Interdit d'éditer ou de publier",
+  "permanent": "permanent",
+  "expire": "expire",
+  "copier": "copier",
+  "droits_pour": "Droits pour {{nom}}",
+  "aucun": "aucun",
+  "fin_saison": "Fin saison",
+  "accepter": "Accepter",
+  "fermer": "Fermer",
+  "doits_fin_saison": "-> fin de saison",
+  "annuler_droits": "Retirer droits"
+}

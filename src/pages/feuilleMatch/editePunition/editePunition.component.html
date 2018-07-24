@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Punition période {{fmServ.periodeChoisie}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content *ngIf="ev && form">
+
+  <div style="margin: auto; max-width: 650px" [formGroup]="form">
+
+      <button *ngIf="!editingChrono" ion-item text-center (click)="editingChrono = true">
+        <ion-icon color="danger" name="warning" *ngIf="form.controls.chrono.errors"></ion-icon>
+        CHRONO: {{chrono}}
+      </button>
+
+    <ion-item *ngIf="editingChrono">
+      <edite-chrono [chrono]="chrono" (chronoChange)="updateChronoCtrl($event)"
+                    [(display)]="editingChrono"></edite-chrono>
+
+    </ion-item>
+    <ng-container *ngIf="!editingChrono">
+      <ion-item>
+        <ion-label>Punition pour cette équipe:
+          <ion-icon color="danger" name="warning" *ngIf="form.controls.id_equipe.invalid"></ion-icon>
+        </ion-label>
+        <ion-select [formControlName]="'id_equipe'" interface="popover" (ionChange)="changed()">
+          <ion-option *ngIf="!form.value['id_equipe']" value>Faites un choix</ion-option>
+          <ion-option *ngFor="let eq of fmServ.equipes" [value]="eq.id">{{eq.nom}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Joueur puni <ion-icon color="danger" name="warning" *ngIf="form.controls['id_membre'].invalid"></ion-icon></ion-label>
+        <ion-select [formControlName]="'id_membre'" interface="popover">
+          <ion-option *ngIf="!form.value['id_membre']" value="">{{form.value['id_equipe'] ? 'Faites un choix' : 'Choisir une équipe'}}</ion-option>
+
+
+          <ng-container *ngFor="let j of optionsJoueurs">
+            <ion-option *ngIf="j.id_equipe == form.value['id_equipe']" [value]="j.id">{{j.nom}}
+            </ion-option>
+            <ion-option *ngIf="j.id_equipe != form.value['id_equipe'] && j.id == form.value['id_membre']" [value]="j.id">
+              !! -> {{j.nom}}
+            </ion-option>
+          </ng-container>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Durée de la punition</ion-label>
+        <ion-select [formControlName]="'duree_punition'" interface="popover">
+          <ion-option *ngIf="!form.value['duree_punition'] || form.value['duree_punition'] == '0'" value="">Valeur requise</ion-option>
+          <ion-option *ngFor="let duree of matchServ.tempsPunitions" [value]="duree">{{duree}} minutes</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Expulsion</ion-label>
+        <ion-toggle [formControlName]="'expulsion'"></ion-toggle>
+      </ion-item>
+
+      <ion-list>
+        <ion-list-header color="light">
+          Codes de punition
+
+          <span style="float: right; cursor: pointer" (click)="alertInfoCodes()"><ion-icon name="information-circle"></ion-icon></span>
+
+        </ion-list-header>
+        <!--<ion-item>-->
+          <!--<ion-label>Courte liste</ion-label>-->
+          <!--<ion-select formControlName="codesFrequentsOuRecentsInput" multiple="true"-->
+                      <!--(ionChange)="updateCodesPunitionsNumeriques($event)">-->
+            <!--<ion-option *ngFor="let data of codesFrequentsOuRecents" [value]="data[0]">-->
+              <!--{{matchServ.descCodePunition(data[0])}}-->
+            <!--</ion-option>-->
+          <!--</ion-select>-->
+        <!--</ion-item>-->
+
+        <ion-item>
+          <ion-label>Choix complet</ion-label>
+          <ion-select [formControlName]="'codesPunitionNumeriques'" multiple="true"
+                      (ionChange)="updateFrequents($event)">
+            <ion-option *ngFor="let record of matchServ.codesPunitions" [value]="record.code">{{record.description}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-item *ngFor="let codeFreq of codesFrequentsOuRecents">
+        <ion-label>{{matchServ.descCodePunition(codeFreq[0])}} </ion-label>
+        <ion-toggle
+                [checked]="R.contains(codeFreq[0], form.controls.codesPunitionNumeriques.value)"
+                (ionChange)="toggleCode($event.checked, codeFreq[0])"
+        ></ion-toggle>
+      </ion-item>
+    <button ion-item [disabled]="form.invalid" text-center (click)="soumettre()"><ion-icon name="checkmark"></ion-icon> Soumettre</button>
+
+    </ng-container>
+  </div>
+</ion-content>

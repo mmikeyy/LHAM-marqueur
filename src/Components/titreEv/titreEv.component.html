@@ -1,0 +1,27 @@
+<!--<ion-card-header>-->
+
+<ion-list class="fm-ev-header">
+  <ion-item-sliding #slidingMenu *ngIf="editable">
+
+    <ion-item color="light">
+      {{ev.get('chrono')}} - {{titre()}}
+      <ion-icon color="danger" *ngIf="ev.get('erreur')" name="warning"></ion-icon>
+      <ion-icon name="arrow-dropleft" float-right></ion-icon>
+    </ion-item>
+    <!--<ion-icon style="float: right; cursor: pointer" name="menu" (click)="clickMenu.emit()"></ion-icon>-->
+    <ion-item-options>
+      <button color="danger" ion-button icon-only (click)="confirmerEffacement()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button  ion-button icon-only (click)="clickMenu.emit('edit')">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <ion-item color="light" *ngIf="!editable">
+    {{ev.get('chrono')}} - {{titre()}}
+    <ion-icon color="danger" *ngIf="ev.get('erreur')" name="warning"></ion-icon>
+  </ion-item>
+</ion-list>
+<!--</ion-card-header>-->

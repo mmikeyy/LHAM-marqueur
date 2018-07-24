@@ -1,0 +1,72 @@
+url: https://sags3.publicationsports.com/serviceV2/service.php
+url_params:
+  lang: fr
+  batch:
+    -
+      request: Standing
+      type: league
+      id: 957
+      seasonId: 9 # mettre à jour pour chaque saison
+      subSeasonId: 1
+      callback: jQuery21005366433016860195_1512602266667
+      _: 1512602266668
+
+
+category:
+  batch: 0
+  fld: categoryId
+
+filtre_assoc: huntsic
+
+batch_result_no: 0
+data_field: standingData
+
+correspondances_champs: # champ ext => champ db
+  id: id_equipe
+  rank: rank
+  name: name
+  played: played
+  normalWin: normalWin
+  overtimeWin: overtimeWin
+  shootoutWin: shootoutWin
+  normalLoss: normalLoss
+  overtimeLoss: overtimeLoss
+  shootoutLoss: shootoutLoss
+  'null': 'null'
+  goalsFor: goalsFor
+  goalsAgainst: goalsAgainst
+  differencial: differential
+  moyen: moyen
+  performancePTS: performancePTS
+  fairPlayPTS: fairPlayPTS
+  pts: pts
+  minorPenalty: minorPenalty
+  majorPenalty: majorPenalty
+  suspension: suspension
+
+
+categories:
+  NO:
+    A: 8058
+    B: 8060
+    C: 8062
+  AT:
+    A: 8065
+    B: 8067
+    C: 8069
+  PW:
+    A: 8072
+    B: 8074
+    BB: 8070
+    C: 8113
+  BT:
+    A: 8078
+    B: 8080
+    BB: 8076
+  MD:
+    A: 8083
+    B: 8085
+    BB: 8081
+  JR:
+    A: 8086
+    B: 8087

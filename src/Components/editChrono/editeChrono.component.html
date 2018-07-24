@@ -1,0 +1,51 @@
+<div style="text-align: center">
+  <div style="margin: auto; font-size: 4rem">
+    <div class="digit no-1" [class.selected]="rang == 0" (click)="rang = 0">{{digits[0]}}</div>
+    <div class="digit no-2" [class.selected]="rang == 1" (click)="rang = 1">{{digits[1]}}</div>
+    <div class="digit">:</div>
+    <div class="digit no-3" [class.selected]="rang == 2" (click)="rang = 2">{{digits[2]}}</div>
+    <div class="digit no-4" [class.selected]="rang == 3" (click)="rang = 3">{{digits[3]}}</div>
+  </div>
+  <div style="text-align: center">
+    {{typeSoumission == 'normal' ? 'depuis début de période' : 'temps à écouler dans la période'}}
+  </div>
+  <div style="text-align: center; font-size: .8em" *ngIf="!dureePeriodeSec">
+    (durée de période non définie)
+  </div>
+  <div style="color: red" *ngIf="!valid">
+    <ion-icon name="alert"></ion-icon> excède la durée de la période ({{chronoFinPeriode}})
+  </div>
+  <div style="text-align: center" ></div>
+  <table class="keys">
+    <tr>
+      <td (click)="type(1)">1</td>
+      <td (click)="type(2)">2</td>
+      <td (click)="type(3)">3</td>
+    </tr>
+    <tr>
+      <td (click)="type(4)">4</td>
+      <td (click)="type(5)" [class.inactive]="rang == 0">5</td>
+      <td (click)="type(6)" [class.inactive]="rang == 2 || rang == 0">6</td>
+    </tr>
+    <tr>
+      <td (click)="type(7)" [class.inactive]="rang == 2 || rang == 0">7</td>
+      <td (click)="type(8)" [class.inactive]="rang == 2 || rang == 0">8</td>
+      <td (click)="type(9)" [class.inactive]="rang == 2 || rang == 0">9</td>
+    </tr>
+    <tr>
+      <td (click)="prev()"><ion-icon name="arrow-back"></ion-icon></td>
+      <td (click)="type(0)">0</td>
+      <td (click)="next()"><ion-icon name="arrow-forward"></ion-icon></td>
+    </tr>
+  </table>
+  <button ion-button (click)="hide()" style="margin-right: 3em" color="danger"><ion-icon name="close"></ion-icon> Annuler</button>
+  <button ion-button (click)="soumettre()" [disabled]="!valid && typeSoumission !== 'normal'"><ion-icon name="checkmark"></ion-icon> Soumettre</button>
+  <ion-item *ngIf="dureePeriodeSec">
+    <ion-label>Temps écoulé ou restant</ion-label>
+    <ion-select [(ngModel)]="typeSoumission" interface="popover" (ionChange)="saveTypeSoumission($event)">
+      <ion-option value="normal">écoulé</ion-option>
+      <ion-option value="restant">restant (-> {{chronoFinPeriode}})</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item text-wrap *ngIf="!dureePeriodeSec">Chrono de fin de période non disponible. Le temps entré est celui écoulé depuis le début de la période.</ion-item>
+</div>

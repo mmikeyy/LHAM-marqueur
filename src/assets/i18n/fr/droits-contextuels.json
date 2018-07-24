@@ -1,0 +1,16 @@
+{
+  "i18n_ref": "droits-contextuels",
+  "droits_contextuels": "Droits contextuels",
+  "info": "Un droit contextuel est conféré en fonction du \"contexte\" dans lequel le contenu est présenté. Quand un contenu éditable est situé dans une partie de page concernant une équipe par exemple, on peut rendre son contenu éditable par le capitaine ou le gérant de l'équipe, ou le responsable de niveau. Dans ce cas, toute personne désignée à une de ces fonctions aura automatiquement accès au contenu pour édition sans qu'il soit nécessaire de mettre à jour les droits d'accès spécifiques des personnes concernées.",
+  "acces_resp_niveau": "responsable de niveau",
+  "acces_gerant": "gérant",
+  "acces_entraineur": "entraîneur",
+  "note": "Note: certains droits pourraient ne pas s'appliquer, par exemple si on donne accès aux gérants à un contenu qui n'est pas présenté dans un contexte d'équipe.",
+  "donner_acces_edit": "Rendre ce ou ces contenus accessibles pour édition pour",
+  "accepter": "Accepter",
+  "annuler": "Annuler",
+  "aucun": "aucun",
+  "resp_niv": "resp.niv.",
+  "ger": "gér.",
+  "entr": "entraîn."
+}

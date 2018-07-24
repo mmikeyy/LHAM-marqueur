@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Joueurs de la ronde {{ronde}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <div style="max-width: 650px; margin: auto">
+    <ion-item text-wrap text-center>
+      Choisissez les joueurs de chaque équipe pour cette ronde
+    </ion-item>
+
+    <ion-list *ngFor="let eq of fmServ.equipes; index as ind">
+      <ion-list-header color="light" text-center>{{eq.nom}}</ion-list-header>
+      <ion-item>
+        <ion-label>Choisir les joueurs</ion-label>
+        <ion-select [(ngModel)]="selectionnes[ind]" [multiple]="true">
+          <ion-option *ngFor="let j of joueurs | myFilter: joueursEq(eq.id)" [value]="j.id">
+            {{fmServ.nomJoueur(j.id)}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-list reorder="true" (ionItemReorder)="reorderItems(ind, $event)">
+        <!--{{selectionnes | json}}-->
+
+        <ion-item *ngFor="let j of selectionnes[ind]">
+          {{fmServ.nomJoueur(j)}}
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </div>
+</ion-content>

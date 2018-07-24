@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center="true">Matchs futurs</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <table class="table table-condensed">
+    <tr>
+      <th>Date, hre</th>
+      <th>Lieu</th>
+      <th>Équipes</th>
+      <th>Marqueur</th>
+    </tr>
+    <tr *ngFor="let item of liste">
+      <td>{{textDate(item)}}</td>
+      <td>{{item.lieu}}</td>
+      <td>{{item.eq1}}<span *ngIf="cl1"> [{{item.cl1}}]</span> vs {{item.eq2}}<span> [{{item.cl2 || item.cl12}}]</span></td>
+      <td>{{item.marqueur}} <ion-icon *ngIf="item.marqueur" [name]="item.marqueur_confirme ? 'checkmark' : 'help'"></ion-icon></td>
+    </tr>
+  </table>
+</ion-content>
+

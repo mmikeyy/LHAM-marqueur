@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Édition fusillade</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="ev && form">
+
+  <div style="max-width: 650px; margin: auto">
+    <ng-container [formGroup]="form">
+      <ion-item>
+        <ion-label>Remportée par cette équipe:
+          <ion-icon color="danger" name="warning" *ngIf="form.controls.id_equipe.invalid"></ion-icon>
+        </ion-label>
+        <ion-select [formControlName]="'id_equipe'" interface="popover">
+          <ion-option *ngIf="!form.value['id_equipe']" value>Faites un choix</ion-option>
+          <ion-option *ngFor="let eq of fmServ.equipes" [value]="eq.id">{{eq.nom}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-list>
+        <ion-list-header text-center color="light">Marque</ion-list-header>
+        <ion-item>
+          <ion-label>{{fmServ.equipes[0].nom}}
+            <ion-icon color="danger" name="warning" *ngIf="form.controls.resultat.errors"></ion-icon>
+          </ion-label>
+          <ion-select [formControlName]="'resultat'" interface="popover">
+            <ion-option value="" *ngIf="form.value.resultat == ''">??</ion-option>
+            <ion-option *ngFor="let res of range" [value]="res">{{res}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{fmServ.equipes[1].nom}}
+            <ion-icon color="danger" name="warning" *ngIf="form.controls.resultat_adversaire.errors"></ion-icon>
+          </ion-label>
+          <ion-select [formControlName]="'resultat_adversaire'" interface="popover">
+            <ion-option value="" *ngIf="form.value.resultat_adversaire == ''">??</ion-option>
+            <ion-option *ngFor="let res of range" [value]="res">{{res}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+    <ion-list>
+
+      <button ion-item text-center *ngIf="form.valid && !editingRonde()" (click)="soumettre()" icon-start color="secondary">
+        <ion-icon name="checkmark"></ion-icon>
+        Soumettre
+        <ion-icon name="arrow-up" *ngIf="chgEv()"></ion-icon>
+        <ion-icon name="arrow-down" *ngIf="chgFusillade()"></ion-icon>
+      </button>
+      <ion-item *ngIf="form.invalid" text-center>
+        <ion-badge>Données à corriger ci-dessus</ion-badge>
+      </ion-item>
+      <ion-item *ngIf="editingRonde()" text-center>
+        <ion-badge>Une ronde ci-dessous est en mode d'édition</ion-badge>
+      </ion-item>
+
+      <ion-card *ngFor="let ronde of rondes">
+        <ion-card-header text-wrap>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-1 style=" cursor: pointer" (click)="setModeRonde(ronde, 'choix')" *ngIf="!modeRonde[ronde]">
+                <ion-icon name="person"></ion-icon>
+              </ion-col>
+              <ion-col col-1 style=" cursor: pointer" (click)="modeRonde[ronde] = ''" *ngIf="modeRonde[ronde]">
+                <ion-icon name="close"></ion-icon>
+              </ion-col>
+
+              <ion-col col-10 style="text-align: center">
+                Ronde {{ronde}}
+                <div *ngIf="modeRonde[ronde] == 'choix'">
+                  <ion-badge color="dark">Choisissez les joueurs</ion-badge>
+                </div>
+                <div *ngIf="modeRonde[ronde] == 'sort'">
+                  <ion-badge color="dark">Placez les joueurs dans l'ordre souhaité</ion-badge>
+                </div>
+                <div *ngIf="!modeRonde[ronde]" style="font-size: .6em">
+                  Entrez les buts comptés
+                </div>
+              </ion-col>
+
+              <ion-col col-1 style="text-align: right; cursor: pointer" (click)="setModeRonde(ronde, 'sort')" *ngIf="!modeRonde[ronde]">
+                <ion-icon name="menu"></ion-icon>
+              </ion-col>
+              <ion-col col-1 style="text-align: right; cursor: pointer" *ngIf="modeRonde[ronde]"
+                       (click)="sauvegarderChoixRonde(ronde)">
+                <ion-icon name="checkmark"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <!--<div>Mode ronde = {{modeRonde|json}}</div>-->
+          <!--<div>choix: {{choixRondes | json}}</div>-->
+
+        </ion-card-header>
+
+        <ion-list *ngFor="let eq of fmServ.equipes; index as ind" style="margin-top: 1rem" >
+          <ion-list-header color="light" text-center>
+            {{eq.nom}}
+          </ion-list-header>
+
+          <ion-list [reorder]="modeRonde[ronde] == 'sort'" (ionItemReorder)="reorder(ronde, ind + 1, $event)">
+
+            <ng-container *ngIf="!modeRonde[ronde] || modeRonde[ronde] == 'sort'">
+              <ion-item *ngFor="let id of idsJoueursRonde(ronde, ind + 1); trackBy: trackLine; index as ord">
+                <ion-label>{{fmServ.nomJoueur(id)}}</ion-label>
+                <ion-toggle
+                        *ngIf="modeRonde[ronde] != 'sort'"
+
+                        (ionChange)="updateBut(id, ronde, ind + 1, $event)"
+                        [checked]="getBut(id, ronde, ind + 1)"
+                ></ion-toggle>
+              </ion-item>
+            </ng-container>
+
+            <ng-container *ngIf="modeRonde[ronde] == 'choix'">
+              <ion-item *ngFor="let j of joueursEq[ind]">
+                <ion-label>{{j.nom}}</ion-label>
+                <ion-toggle
+
+                        [checked]="R.contains(j.id, R.pathOr([], [ronde, 'choix', ind + 1], choixRondes))"
+                        (ionChange)="choisir(j.id, ronde, ind + 1, $event)"
+                ></ion-toggle>
+              </ion-item>
+
+            </ng-container>
+
+          </ion-list>
+        </ion-list>
+
+
+
+      </ion-card>
+      <ion-item text-center>
+        <button [default]="true" ion-button (click)="effacerRonde()" color="danger" *ngIf="rondes.length" icon-start [disabled]="buttonsDeactivated"><ion-icon name="trash"></ion-icon>Effacer ronde {{R.last(rondes)}}</button>
+        <button [default]="true" ion-button (click)="ajoutRonde()" icon-start [disabled]="buttonsDeactivated"><ion-icon name="add"></ion-icon>Ajouter ronde {{prochaineRonde}}</button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

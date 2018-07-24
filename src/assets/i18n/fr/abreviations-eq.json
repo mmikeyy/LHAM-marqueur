@@ -1,0 +1,15 @@
+{
+  "i18n_ref": "abreviations-eq",
+  "abreviations_noms_eq": "Abrévations noms d'équipes",
+  "nom_original": "Nom original",
+  "abrev_std": "Abréviation standard",
+  "abrev_mob": "Abréviation mobile",
+  "retour": "Retour",
+  "rafraichir": "Rafraîchir",
+  "ajouter": "Ajouter",
+  "editer": "Éditer",
+  "existe_deja": "Abréviation déjà définie pour ce nom",
+  "accepter": "Accepter",
+  "annuler": "Annuler",
+  "effacer": "Effacer"
+}

@@ -11,4 +11,8 @@ export class AboutPage {
 
   }
 
+  log() {
+    console.log('len', this.navCtrl.length(), this.navCtrl)
+  }
+
 }

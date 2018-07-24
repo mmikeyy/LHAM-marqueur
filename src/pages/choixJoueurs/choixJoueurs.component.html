@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title text-center>Match #{{ joueursServ.idMatch }}<br>Joueurs {{matchsServ.nomEq(joueursServ.idEquipe)}}</ion-title>
+    <ion-buttons end>
+      <ion-spinner name="bubbles"[style.visibility]="joueursServ.refreshing ? 'visible' : 'hidden' "></ion-spinner>
+      <button ion-button clear icon-only [style.visibility]="joueursServ.refreshing ? 'hidden' : 'visible'" (click)="refresh()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="max-width: 650px; margin: auto">
+    <ion-list>
+      <ion-list-header color="dark">
+        Joueurs réguliers de l'équipe
+      </ion-list-header>
+
+
+      <table ion-item>
+        <tr>
+          <th>
+            Joueur
+          </th>
+          <th>Pos.</th>
+          <th>#Chandail</th>
+        </tr>
+        <ng-container *ngFor="let j of joueursServ.joueurs">
+
+
+          <tr *ngIf="(j.id_equipe_match || j.id_equipe) == joueursServ.idEquipe && !j.substitut">
+
+            <td [style.opacity]="j.choisi ? 1 : .5">
+              <button ion-button clear (click)="choisir(j)" icon-start>
+                <ion-icon [name]="j.locked? 'lock' : j.choisi ? 'checkmark' : 'close'"></ion-icon>
+                {{j.nom}} <span *ngIf="j.gardien_dj" style="font-weight: bold; margin-left: 1em; color: red">[G]</span>
+              </button>
+
+            </td>
+            <td>
+              <button *ngIf="j.choisi" ion-button clear (click)="changePosition(j)">{{positionText(j.position)}}
+              </button>
+
+            </td>
+            <td>
+              <button *ngIf="j.choisi" ion-button clear (click)="entrerChandail(j)">{{j.no_chandail ? '#' +
+                j.no_chandail : '-' }}
+              </button>
+            </td>
+          </tr>
+
+
+        </ng-container>
+      </table>
+
+
+    </ion-list>
+    <ion-list>
+      <ion-list-header color="dark">
+        Substituts
+      </ion-list-header>
+      <button ion-item clear text-center (click)="ajouterSubstitut()" icon-start>
+        <ion-icon name="add"></ion-icon>
+        Ajouter substitut
+      </button>
+
+      <table ion-item>
+        <ng-container *ngFor="let j of joueursServ.joueurs">
+
+
+          <tr *ngIf="(j.id_equipe_match || j.id_equipe) == joueursServ.idEquipe && j.substitut">
+
+            <td [style.opacity]="j.choisi ? 1 : .5">
+              <button ion-button clear (click)="choisir(j)" icon-start>
+                <ion-icon [name]="j.locked? 'lock' : j.choisi ? 'checkmark' : 'close'"></ion-icon>
+                {{j.nom}}
+              </button>
+
+            </td>
+            <td>
+              <button *ngIf="j.choisi" ion-button clear (click)="changePosition(j)">{{positionText(j.position)}}
+              </button>
+
+            </td>
+            <td>
+              <button *ngIf="j.choisi" ion-button clear (click)="entrerChandail(j)">{{j.no_chandail ? '#' +
+                j.no_chandail : '-' }}
+              </button>
+            </td>
+            <!--<td>-->
+            <!--id equipe{{ j.id_equipe_match }}}} / {{j.id_equipe}}-->
+            <!--</td>-->
+          </tr>
+
+
+        </ng-container>
+      </table>
+      <ion-item text-right="">
+        <button ion-button round (click)="ajouterMembre()" default icon-start>
+          <ion-icon name="add"></ion-icon>
+          Nouveau membre
+        </button>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>

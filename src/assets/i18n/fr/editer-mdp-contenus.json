@@ -1,0 +1,13 @@
+{
+  "i18n_ref": "editer-mdp-contenus",
+  "retour": "Retour",
+  "titre_edition_mdp": "Édition des mots de passe des contenus",
+  "non_utilise": "Non utilisé",
+  "utilise_n_contenus": "Utilisé pour {{n}} contenus",
+  "mdp_utilise_pour": "Mot de passe utilisé pour les contenus suivants:",
+  "pas_10": "Le serveur n'a pas reçu les 10 valeurs attendues",
+  "valeur_invalide": "Valeur reçue invalide",
+  "refresh": "Rafraîchir",
+  "sauvegarder": "Sauvegarder",
+  "min_5_car": "Lorsque défini, un mot de passe doit comporter au moins 5 caractères"
+}

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Fusillade</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="ev">
+  <div style="max-width: 650px; margin: auto">
+    <ion-item>
+      Remportée par
+      <span style="float: right">{{fmServ.nomEquipe(fmServ.equipes[0].id)}}</span>
+    </ion-item>
+
+    <ion-item>Marque finale:
+      <span float-right>{{ ev.resultat }} - {{ev.resultat_adversaire}} </span>
+    </ion-item>
+    <div style="display: flex; justify-content: space-around;">
+      <button ion-button color="danger" icon-start (click)="effacerFusillade()">
+        <ion-icon name="trash"></ion-icon>Effacer</button>
+      <button ion-button text-end (click)="editeFusillade()" icon-start color="secondary">
+        <ion-icon name="create"></ion-icon>
+        Éditer
+      </button>
+    </div>
+
+    <ion-card *ngFor="let ronde of rondes">
+
+
+        <ion-card-header>
+          <ion-item color="light" text-center>Ronde {{ronde}}</ion-item>
+        </ion-card-header>
+
+      <ion-list>
+        <ion-list-header text-center color="light">{{fmServ.equipes[0].nom}}</ion-list-header>
+        <ion-item *ngFor="let item of liste | myFilter: rondeEq(ronde)">
+          {{fmServ.nomJoueur(item.id_joueur1)}}
+          <ion-icon [name]="item.but1 ? 'checkmark' : 'remove'" float-right></ion-icon>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header text-center color="light">{{fmServ.equipes[1].nom}}</ion-list-header>
+        <ion-item *ngFor="let item of liste | myFilter: rondeEq(ronde)">
+          {{fmServ.nomJoueur(item.id_joueur2)}}
+          <ion-icon [name]="item.but2 ? 'checkmark' : 'remove'" float-right></ion-icon>
+        </ion-item>
+      </ion-list>
+
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,7 @@
+Vous pouvez modifier le thème testé et voir immédiatement le résultat sur la page.
+
+Notez que le thème modifié n'est pas utilisé pour les visiteurs du site. Vous êtes seul(e)
+à voir les changements que vous faites. Allez-y donc sans crainte.
+
+Les visiteurs ne pourront voir le thème modifié qu'une fois que vous l'aurez
+publié.

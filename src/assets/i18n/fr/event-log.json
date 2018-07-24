@@ -1,0 +1,21 @@
+{
+  "i18n_ref": "event-log",
+  "event_log": "Journal",
+  "retour": "Retour",
+  "visiteur": "Visiteur",
+  "nom": "Nom",
+  "categ": "Catégorie",
+  "op": "Opération",
+  "desc": "Description",
+  "charger_plus_anciens": "Charger plus anciens",
+  "charger_plus_recents": "Charger plus récents",
+  "charger": "Charger",
+  "age": "Âge",
+  "aucun_charge": "Aucune entrée chargée",
+  "n_charges": "{{ n }} entrées chargées",
+  "vider_liste": "Vider la liste",
+  "charger_50": "Charger 50 de plus",
+  "charger_100": "Charger 100 de plus",
+  "charger_200": "Charger 200 de plus",
+  "filtre_nom": "Filtre par nom"
+}

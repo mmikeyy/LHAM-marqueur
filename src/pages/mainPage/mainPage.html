@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Page Principale</ion-title>
+    <ion-buttons end>
+      <button icon-only ion-button (click)="login()">
+        <ion-icon name="person" [class.logged-out]="!($idVisiteur | async)"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content text-center>
+  <div style="margin-top: 1rem">
+    <p>
+      <button ion-button (click)="navMatchsFuturs()">Matchs à venir</button>
+    </p>
+    <p>
+      <button ion-button (click)="navMesMatchs()">Mes matchs</button>
+    </p>
+  </div></ion-content>
+

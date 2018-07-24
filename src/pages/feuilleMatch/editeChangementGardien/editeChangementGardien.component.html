@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Changement de gardien - {{fmServ.periodeChoisie}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content *ngIf="ev && form">
+  <div style="margin: auto; max-width: 650px" [formGroup]="form">
+  <button *ngIf="!editingChrono" ion-item text-center (click)="editingChrono = true"><ion-icon color="danger" name="warning" *ngIf="form.controls.chrono.errors"></ion-icon> CHRONO: {{chrono}}</button>
+
+  <ion-item *ngIf="editingChrono">
+    <edite-chrono [chrono]="chrono" (chronoChange)="updateChronoCtrl($event)" [(display)]="editingChrono"></edite-chrono>
+
+  </ion-item>
+
+    <ng-container *ngIf="!editingChrono">
+      Désignez le gardien devant le filet de chaque équipe:
+      <ion-item>
+        <ion-label>{{fmServ.nomEquipeNo(1)}}</ion-label>
+        <ion-select [formControlName]="'gardien1'" interface="popover">
+          <ion-option value="">Filet désert</ion-option>
+          <ion-option *ngFor="let j of joueurs1" [value]="j.id">{{j.nom}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{fmServ.nomEquipeNo(2)}}</ion-label>
+        <ion-select [formControlName]="'gardien2'" interface="popover">
+          <ion-option value="">Filet désert</ion-option>
+          <ion-option *ngFor="let j of joueurs2" [value]="j.id">{{j.nom}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <button ion-item text-center  (click)="soumettre()" [disabled]="form.invalid"><ion-icon name="checkmark"></ion-icon>Soumettre</button>
+
+
+    </ng-container>
+  </div>
+
+</ion-content>

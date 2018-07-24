@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Mes matchs</ion-title>
+    <ion-buttons end>
+      <button icon-only ion-button (click)="login()">
+        <ion-icon name="person" [class.logged-out]="!($idVisiteur | async)"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content *ngIf="!loggedIn" text-center>
+  <div style="margin-top: 4rem;">
+    Ouverture de session requise
+  </div>
+</ion-content>
+<ion-content *ngIf="!!loggedIn" text-center>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div style="max-width: 650px; margin: auto">
+    <div style="display: flex; flex-direction: row; justify-content: space-around">
+
+      <div>
+        <ion-icon name="arrow-dropdown"></ion-icon>
+        <span style="margin-left: .25em"> mise à jour;</span>
+      </div>
+      <div>
+        <ion-icon name="arrow-dropleft"></ion-icon>
+        <span style="margin-left: .25em">menu match</span>
+      </div>
+    </div>
+    <ion-list>
+      <ion-item-sliding *ngFor="let match of liste">
+        <ion-item>
+        <span>
+          <span style="display: block">
+                  {{ matchsServ.matchDate(match)}} {{matchsServ.nomArena(match.lieu)}}
+            </span>
+          <span><ion-icon [name]="match.sj_ok1 && match.sj_ok2 ? 'checkmark' : 'warning'"></ion-icon><b>#{{match.id}}</b> {{matchsServ.nomEq(match.id_equipe1)}} <ion-badge *ngIf="match.forfait1">F</ion-badge>[{{match.pts1 === null ? '?' : match.pts1}} ] vs {{matchsServ.nomEq(match.id_equipe2)}} <ion-badge *ngIf="match.forfait2">F</ion-badge> [{{match.pts2 === null ? '?' : match.pts2}}]</span>
+        </span>
+          <ion-icon float-end name="lock" *ngIf="match.locked"></ion-icon>
+          <ion-icon float-end name="arrow-dropleft"></ion-icon>
+        </ion-item>
+        <ion-item-options side="right">
+        <span *ngIf="!match.locked">
+          <button ion-button (click)="entrerResultats(match.id)">
+            Pointage
+          </button>
+          <button ion-button color="secondary" (click)="menuMatch(match.id)">
+            Menu
+          </button>
+          <button ion-button icon-only (click)="showInfo(match.id)">
+            <ion-icon name="information-circle"></ion-icon>
+          </button>
+        </span>
+
+          <button ion-button *ngIf="match.locked" clear (click)="infoVerrouille()">
+            Le match est verrouillé
+          </button>
+
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+</ion-content>

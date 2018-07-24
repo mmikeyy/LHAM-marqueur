@@ -1,1 +1,7 @@
+<p-growl
+        [(value)]="growl.msgs"
+        [life]="27000"
+        (onClose)="growl.onClose($event)"
+        (onClick)="growl.onClose($event)"
+></p-growl>
 <ion-nav [root]="rootPage"></ion-nav>

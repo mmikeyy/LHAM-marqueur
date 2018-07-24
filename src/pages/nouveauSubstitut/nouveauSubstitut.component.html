@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Ajout d'un membre</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content [formGroup]="form">
+  <ion-list>
+    <ion-item text-center text-wrap>
+      <ion-badge>Avant de créer un membre, assurez-vous qu'il n'existe pas déjà</ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Nom de famille <ng-container *ngIf="isError('nom'); then warn"></ng-container></ion-label>
+      <ion-input type="text" formControlName="nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Prénom <ng-container *ngIf="isError('prenom'); then warn"></ng-container></ion-label>
+      <ion-input maxlength="10" type="text"  formControlName="prenom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Genre</ion-label>
+      <ion-select formControlName="sexe">
+        <ion-option value="M">Masculin</ion-option>
+        <ion-option value="F">Féminin</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Courriel <ng-container *ngIf="isError('courriel'); then warn"></ng-container></ion-label>
+      <ion-input type="email" formControlName="courriel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Cellulaire <ng-container *ngIf="isError('cell'); then warn"></ng-container></ion-label>
+      <ion-input type="tel" formControlName="cell"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Date de naissance<ng-container *ngIf="isError('date_naissance'); then warn"></ng-container></ion-label>
+      <ion-datetime cancelText="Annuler" doneText="OK" [monthNames]="mois" pickerFormat="D MMMM YYYY" displayFormat="D MMMM YYYY" [max]="maxNaissance" formControlName="date_naissance"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label  floating>No de chandail <ng-container *ngIf="isError('no_chandail'); then warn"></ng-container></ion-label>
+      <ion-input [min]="0" type="number" formControlName="no_chandail"></ion-input>
+    </ion-item>
+
+    <ion-item text-center>
+      <button ion-button  (click)="soumettre()" large round [disabled]="!form.valid"><ion-icon name="checkmark"></ion-icon> Soumettre</button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+<ng-template #warn><ion-icon color="danger" name="warning"></ion-icon></ng-template>

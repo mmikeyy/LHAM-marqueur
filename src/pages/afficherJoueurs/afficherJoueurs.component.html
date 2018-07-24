@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Joueurs du match #{{joueursServ.idMatch}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!joueursServ.idMatch || !joueursServ.idEquipe1 && !joueursServ.idEquipe2; else ok">
+    <div style="margin-top:4rem">
+      <ion-item text-center>
+        <ion-badge color="danger">Aucun match sélectionné</ion-badge>
+      </ion-item>
+    </div>
+  </div>
+  <ng-template #ok>
+    <div>
+
+      <ion-segment [(ngModel)]="selectedId">
+        <ion-segment-button *ngFor="let id of ids" [value]="id">
+          {{noms[id] || '#' + id}}
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-item *ngFor="let j of getListe()">
+        <div style="display: inline-block; width: 12em; overflow: hidden; margin-right: 2em" [style.font-weight]="j.position == 2 ? 'bold' : 'normal'">{{matchsServ.nomPosition(j.position)}}</div>{{j.nom}} <span *ngIf="j.no_chandail">#{{j.no_chandail}}</span>
+      </ion-item>
+    </div>
+  </ng-template>
+</ion-content>

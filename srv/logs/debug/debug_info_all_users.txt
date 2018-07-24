@@ -1,0 +1,2485 @@
+17:28:52 :   ........ classe gardiens
+
+17:28:52 :   but vilet désert ok
+
+17:29:26 :   ........ classe gardiens
+
+17:29:26 :   but vilet désert ok
+
+17:29:32 :   ........ classe gardiens
+
+17:29:32 :   but vilet désert ok
+
+17:29:54 :   ........ classe gardiensArray
+(
+    [gardien_inconnu] => Gardien absent de feuille de match période %s chrono %s
+    [deux_gardiens_meme_equipe] => Deux gardiens de la même équipe actifs à période %s, chrono %s
+    [designez_gardiens_au_debut] => Désignez les gardiens au début de la partie
+    [gardien_dejoue_pas_actif] => Gardien déjoué différent de gardien devant le filet
+    [per_chrono] =>  [Pér. %u @ %s]
+    [echec_compilation_an_dn] => Échec de compilation d'avantages numériques
+    [evenement_apres_fin_periode] => Événement enregistré après fin de période %u à %s
+    [manque_fin_per_x] => Fin de période manquante, période %u
+    [plusieurs_fins_per_x] => La période %u a plus d'une fin
+    [aucune_donnee_per_x] => Aucune donnée pour période(s) %s. Au minimumSecondes, chaque période doit avoir une fin.
+    [even_apres_fin_per_x] => Événement enregistré pour période %u après la fin de cette période
+    [plus_d_une_fusillade] => Il ne peut y avoir qu'une fusillade enregistrée pour un match
+    [fusillade_match_non_nul] => Fusillade pour partie non nulle (%s à %s)
+    [resultat_fusillade_non_bris_egalite] => Le résultat d'une fusillade doit être un bris d'égalité (actuellement %s à %s)
+    [fusillade_doit_faire_gagner_1_pt] => La fusillade doit faire gagner un seul point à l'équipe qui la remporte (%s -> %s)
+    [fusillade_mauvaise_eq] => Fusillade remportée par équipe inconnue
+    [fusillade_vide] => Aucun détail enregistré pour la fusillade
+    [fusillade_doit_commencer_ronde_1] => La fusillade doit débuter par la ronde no 1 (débute par %s)
+    [mauvaise_ronde] => Ronde mal identifiée (entrée no %s de la fusillade)
+    [manque_joueur_fusillade] => Joueur manquant dans fusillade (entrée no %s)
+    [joueur_fusillade_non_present] => Un joueur de la fusillade absent du match (%s à l'entrée no %s)
+    [entree_fusillade_meme_eq] => Entrée no %s de fusillade comprend deux tirs pour même équipe
+    [victoire_a_perdant_fusillade] => La victoire n'a pas été attribuée au gagnant de la fusillade
+    [fusillade_sans_gagnant] => Fusillade sans gagnant!
+    [deja_forfait] => Victoire par forfait déjà enregistrée
+    [match_verrouille] => Le match est verrouillé
+    [match_futur] => Il s'agit d'un match futur
+    [a_replanifier] => Le match est marqué comme étant à replanifier
+    [match_annule] => Le match est marqué comme ayant été annulé
+    [pointage_existe] => Le pointage final a déjà été entré
+    [joueurs_deux_equipes] => Joueurs présents pour les deux équipes
+    [pointage_incompatible_joueurs] => Joueurs présents pour équipe perdante
+    [evenements_entres] => La feuille de match n'est pas vide
+    [pas_de_joueurs] => Les joueurs de l'équipe présente doivent être enregistrés
+)
+
+
+17:29:54 :   but vilet désert ok
+
+19:48:53 :   but vilet désert ok
+
+19:51:38 :   but vilet désert ok
+
+19:51:39 :   but vilet désert ok
+
+20:32:43 :   aaaaaaaaaaaaaaa
+
+20:32:43 :   ......................
+
+20:32:51 :   aaaaaaaaaaaaaaa
+
+20:32:51 :   ......................
+
+20:33:37 :   aaaaaaaaaaaaaaa
+
+20:33:37 :   ......................
+
+21:56:24 :   but vilet désert ok
+
+22:02:45 :   but vilet désert ok
+
+22:02:47 :   but vilet désert ok
+
+22:04:18 :   but vilet désert ok
+
+22:07:20 :   but vilet désert ok
+
+22:07:22 :   but vilet désert ok
+
+23:37:33 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+23:37:33 :   input stream 
+
+23:37:33 :   vals input stream = 
+
+23:37:33 :   champ ne manque pas: id
+
+23:37:33 :   champ ne manque pas: id_equipe
+
+23:37:33 :   champ ne manque pas: id_membre
+
+23:37:33 :   Champ ********************************* periode manquant pour règle unsigned
+
+23:37:33 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+23:37:33 :   champ ne manque pas: duree_punition
+
+23:37:33 :   champ ne manque pas: expulsion
+
+23:37:33 :   champ ne manque pas: codes_punition
+
+23:37:33 :   champ ne manque pas: but
+
+23:37:33 :   champ ne manque pas: but_special
+
+23:37:33 :   champ ne manque pas: but_propre_filet
+
+23:37:33 :   champ ne manque pas: id_membre_passe
+
+23:37:33 :   champ ne manque pas: id_membre_passe2
+
+23:37:33 :   champ ne manque pas: passe_propre_filet
+
+23:37:33 :   champ ne manque pas: commentaire
+
+23:37:33 :   champ ne manque pas: id_membre_gardien
+
+23:37:33 :   champ ne manque pas: resultat
+
+23:37:33 :   champ ne manque pas: resultat_adversaire
+
+23:37:33 :   champ ne manque pas: avantage_numerique
+
+23:37:33 :   champ ne manque pas: changement_gardien
+
+23:37:33 :   champ ne manque pas: gardien1
+
+23:37:33 :   champ ne manque pas: gardien2
+
+23:37:33 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+23:37:33 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+23:37:33 :   validation accès
+
+23:37:33 :   ok: admin
+
+23:37:40 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+23:37:40 :   input stream {"type_enreg":"fin_periode","periode":1,"id_match":"2706","chrono":"22:00"}
+
+23:37:40 :   vals input stream = Array
+(
+    [type_enreg] => fin_periode
+    [periode] => 1
+    [id_match] => 2706
+    [chrono] => 22:00
+)
+
+
+23:37:40 :   champ ne manque pas: id
+
+23:37:40 :   champ ne manque pas: id_equipe
+
+23:37:40 :   champ ne manque pas: id_membre
+
+23:37:40 :   champ ne manque pas: duree_punition
+
+23:37:40 :   champ ne manque pas: expulsion
+
+23:37:40 :   champ ne manque pas: codes_punition
+
+23:37:40 :   champ ne manque pas: but
+
+23:37:40 :   champ ne manque pas: but_special
+
+23:37:40 :   champ ne manque pas: but_propre_filet
+
+23:37:40 :   champ ne manque pas: id_membre_passe
+
+23:37:40 :   champ ne manque pas: id_membre_passe2
+
+23:37:40 :   champ ne manque pas: passe_propre_filet
+
+23:37:40 :   champ ne manque pas: commentaire
+
+23:37:40 :   champ ne manque pas: id_membre_gardien
+
+23:37:40 :   champ ne manque pas: resultat
+
+23:37:40 :   champ ne manque pas: resultat_adversaire
+
+23:37:40 :   champ ne manque pas: avantage_numerique
+
+23:37:40 :   champ ne manque pas: changement_gardien
+
+23:37:40 :   champ ne manque pas: gardien1
+
+23:37:40 :   champ ne manque pas: gardien2
+
+23:37:40 :   
+                    SELECT COUNT(IF(type_enreg = 'fin_periode', 1, NULL)) nb_fins_per,
+                        max(chrono) chrono
+                    FROM match_feuille
+                    WHERE id_match = 2706
+                    AND periode = 1
+                    AND 1
+                
+
+23:37:40 :   db_vals = Array
+(
+    [id_match] => 2706
+    [periode] => 1
+    [chrono] => 22:00
+    [type_enreg] => fin_periode
+)
+
+
+23:37:40 :   validation accès
+
+23:37:40 :   ok: admin
+
+23:37:40 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+23:44:44 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+23:44:44 :   input stream 
+
+23:44:44 :   vals input stream = 
+
+23:44:44 :   champ ne manque pas: id
+
+23:44:44 :   champ ne manque pas: id_equipe
+
+23:44:44 :   champ ne manque pas: id_membre
+
+23:44:44 :   Champ ********************************* periode manquant pour règle unsigned
+
+23:44:44 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+23:44:44 :   champ ne manque pas: duree_punition
+
+23:44:44 :   champ ne manque pas: expulsion
+
+23:44:44 :   champ ne manque pas: codes_punition
+
+23:44:44 :   champ ne manque pas: but
+
+23:44:44 :   champ ne manque pas: but_special
+
+23:44:44 :   champ ne manque pas: but_propre_filet
+
+23:44:44 :   champ ne manque pas: id_membre_passe
+
+23:44:44 :   champ ne manque pas: id_membre_passe2
+
+23:44:44 :   champ ne manque pas: passe_propre_filet
+
+23:44:44 :   champ ne manque pas: commentaire
+
+23:44:44 :   champ ne manque pas: id_membre_gardien
+
+23:44:44 :   champ ne manque pas: resultat
+
+23:44:44 :   champ ne manque pas: resultat_adversaire
+
+23:44:44 :   champ ne manque pas: avantage_numerique
+
+23:44:44 :   champ ne manque pas: changement_gardien
+
+23:44:44 :   champ ne manque pas: gardien1
+
+23:44:44 :   champ ne manque pas: gardien2
+
+23:44:44 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+23:44:44 :   db_vals = Array
+(
+    [id_match] => 2708
+)
+
+
+23:44:44 :   validation accès
+
+23:44:44 :   ok: admin
+
+23:44:44 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+11:24:06 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:24:06 :   input stream 
+
+11:24:06 :   vals input stream = 
+
+11:24:06 :   champ ne manque pas: id
+
+11:24:06 :   champ ne manque pas: id_equipe
+
+11:24:06 :   champ ne manque pas: id_membre
+
+11:24:06 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:24:06 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:24:06 :   champ ne manque pas: duree_punition
+
+11:24:06 :   champ ne manque pas: expulsion
+
+11:24:06 :   champ ne manque pas: codes_punition
+
+11:24:06 :   champ ne manque pas: but
+
+11:24:06 :   champ ne manque pas: but_special
+
+11:24:06 :   champ ne manque pas: but_propre_filet
+
+11:24:06 :   champ ne manque pas: id_membre_passe
+
+11:24:06 :   champ ne manque pas: id_membre_passe2
+
+11:24:06 :   champ ne manque pas: passe_propre_filet
+
+11:24:06 :   champ ne manque pas: commentaire
+
+11:24:06 :   champ ne manque pas: id_membre_gardien
+
+11:24:06 :   champ ne manque pas: resultat
+
+11:24:06 :   champ ne manque pas: resultat_adversaire
+
+11:24:06 :   champ ne manque pas: avantage_numerique
+
+11:24:06 :   champ ne manque pas: changement_gardien
+
+11:24:06 :   champ ne manque pas: gardien1
+
+11:24:06 :   champ ne manque pas: gardien2
+
+11:24:06 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:24:06 :   db_vals = Array
+(
+    [id_match] => 2705
+)
+
+
+11:24:06 :   validation accès
+
+11:24:06 :   ok: admin
+
+11:24:32 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:24:32 :   input stream 
+
+11:24:32 :   vals input stream = 
+
+11:24:32 :   champ ne manque pas: id
+
+11:24:32 :   champ ne manque pas: id_equipe
+
+11:24:32 :   champ ne manque pas: id_membre
+
+11:24:32 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:24:32 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:24:32 :   champ ne manque pas: duree_punition
+
+11:24:32 :   champ ne manque pas: expulsion
+
+11:24:32 :   champ ne manque pas: codes_punition
+
+11:24:32 :   champ ne manque pas: but
+
+11:24:32 :   champ ne manque pas: but_special
+
+11:24:32 :   champ ne manque pas: but_propre_filet
+
+11:24:32 :   champ ne manque pas: id_membre_passe
+
+11:24:32 :   champ ne manque pas: id_membre_passe2
+
+11:24:32 :   champ ne manque pas: passe_propre_filet
+
+11:24:32 :   champ ne manque pas: commentaire
+
+11:24:32 :   champ ne manque pas: id_membre_gardien
+
+11:24:32 :   champ ne manque pas: resultat
+
+11:24:32 :   champ ne manque pas: resultat_adversaire
+
+11:24:32 :   champ ne manque pas: avantage_numerique
+
+11:24:32 :   champ ne manque pas: changement_gardien
+
+11:24:32 :   champ ne manque pas: gardien1
+
+11:24:32 :   champ ne manque pas: gardien2
+
+11:24:32 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:24:32 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+11:24:32 :   validation accès
+
+11:24:32 :   ok: admin
+
+11:24:32 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+11:24:57 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:24:57 :   input stream 
+
+11:24:57 :   vals input stream = 
+
+11:24:57 :   champ ne manque pas: id
+
+11:24:57 :   champ ne manque pas: id_equipe
+
+11:24:57 :   champ ne manque pas: id_membre
+
+11:24:57 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:24:57 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:24:57 :   champ ne manque pas: duree_punition
+
+11:24:57 :   champ ne manque pas: expulsion
+
+11:24:57 :   champ ne manque pas: codes_punition
+
+11:24:57 :   champ ne manque pas: but
+
+11:24:57 :   champ ne manque pas: but_special
+
+11:24:57 :   champ ne manque pas: but_propre_filet
+
+11:24:57 :   champ ne manque pas: id_membre_passe
+
+11:24:57 :   champ ne manque pas: id_membre_passe2
+
+11:24:57 :   champ ne manque pas: passe_propre_filet
+
+11:24:57 :   champ ne manque pas: commentaire
+
+11:24:57 :   champ ne manque pas: id_membre_gardien
+
+11:24:57 :   champ ne manque pas: resultat
+
+11:24:57 :   champ ne manque pas: resultat_adversaire
+
+11:24:57 :   champ ne manque pas: avantage_numerique
+
+11:24:57 :   champ ne manque pas: changement_gardien
+
+11:24:57 :   champ ne manque pas: gardien1
+
+11:24:57 :   champ ne manque pas: gardien2
+
+11:24:57 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:24:57 :   db_vals = Array
+(
+    [id_match] => 2708
+)
+
+
+11:24:57 :   validation accès
+
+11:24:57 :   ok: admin
+
+11:24:57 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+11:25:12 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:25:12 :   input stream 
+
+11:25:12 :   vals input stream = 
+
+11:25:12 :   champ ne manque pas: id
+
+11:25:12 :   champ ne manque pas: id_equipe
+
+11:25:12 :   champ ne manque pas: id_membre
+
+11:25:12 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:25:12 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:25:12 :   champ ne manque pas: duree_punition
+
+11:25:12 :   champ ne manque pas: expulsion
+
+11:25:12 :   champ ne manque pas: codes_punition
+
+11:25:12 :   champ ne manque pas: but
+
+11:25:12 :   champ ne manque pas: but_special
+
+11:25:12 :   champ ne manque pas: but_propre_filet
+
+11:25:12 :   champ ne manque pas: id_membre_passe
+
+11:25:12 :   champ ne manque pas: id_membre_passe2
+
+11:25:12 :   champ ne manque pas: passe_propre_filet
+
+11:25:12 :   champ ne manque pas: commentaire
+
+11:25:12 :   champ ne manque pas: id_membre_gardien
+
+11:25:12 :   champ ne manque pas: resultat
+
+11:25:12 :   champ ne manque pas: resultat_adversaire
+
+11:25:12 :   champ ne manque pas: avantage_numerique
+
+11:25:12 :   champ ne manque pas: changement_gardien
+
+11:25:12 :   champ ne manque pas: gardien1
+
+11:25:12 :   champ ne manque pas: gardien2
+
+11:25:12 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:25:12 :   db_vals = Array
+(
+    [id_match] => 2705
+)
+
+
+11:25:12 :   validation accès
+
+11:25:12 :   ok: admin
+
+11:26:19 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:26:19 :   input stream 
+
+11:26:19 :   vals input stream = 
+
+11:26:19 :   champ ne manque pas: id
+
+11:26:19 :   champ ne manque pas: id_equipe
+
+11:26:19 :   champ ne manque pas: id_membre
+
+11:26:19 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:26:19 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:26:19 :   champ ne manque pas: duree_punition
+
+11:26:19 :   champ ne manque pas: expulsion
+
+11:26:19 :   champ ne manque pas: codes_punition
+
+11:26:19 :   champ ne manque pas: but
+
+11:26:19 :   champ ne manque pas: but_special
+
+11:26:19 :   champ ne manque pas: but_propre_filet
+
+11:26:19 :   champ ne manque pas: id_membre_passe
+
+11:26:19 :   champ ne manque pas: id_membre_passe2
+
+11:26:19 :   champ ne manque pas: passe_propre_filet
+
+11:26:19 :   champ ne manque pas: commentaire
+
+11:26:19 :   champ ne manque pas: id_membre_gardien
+
+11:26:19 :   champ ne manque pas: resultat
+
+11:26:19 :   champ ne manque pas: resultat_adversaire
+
+11:26:19 :   champ ne manque pas: avantage_numerique
+
+11:26:19 :   champ ne manque pas: changement_gardien
+
+11:26:19 :   champ ne manque pas: gardien1
+
+11:26:19 :   champ ne manque pas: gardien2
+
+11:26:19 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:26:19 :   db_vals = Array
+(
+    [id_match] => 2708
+)
+
+
+11:26:19 :   validation accès
+
+11:26:19 :   ok: admin
+
+11:26:19 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+11:26:47 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:26:47 :   input stream 
+
+11:26:47 :   vals input stream = 
+
+11:26:47 :   champ ne manque pas: id
+
+11:26:47 :   champ ne manque pas: id_equipe
+
+11:26:47 :   champ ne manque pas: id_membre
+
+11:26:47 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:26:47 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:26:47 :   champ ne manque pas: duree_punition
+
+11:26:47 :   champ ne manque pas: expulsion
+
+11:26:47 :   champ ne manque pas: codes_punition
+
+11:26:47 :   champ ne manque pas: but
+
+11:26:47 :   champ ne manque pas: but_special
+
+11:26:47 :   champ ne manque pas: but_propre_filet
+
+11:26:47 :   champ ne manque pas: id_membre_passe
+
+11:26:47 :   champ ne manque pas: id_membre_passe2
+
+11:26:47 :   champ ne manque pas: passe_propre_filet
+
+11:26:47 :   champ ne manque pas: commentaire
+
+11:26:47 :   champ ne manque pas: id_membre_gardien
+
+11:26:47 :   champ ne manque pas: resultat
+
+11:26:47 :   champ ne manque pas: resultat_adversaire
+
+11:26:47 :   champ ne manque pas: avantage_numerique
+
+11:26:47 :   champ ne manque pas: changement_gardien
+
+11:26:47 :   champ ne manque pas: gardien1
+
+11:26:47 :   champ ne manque pas: gardien2
+
+11:26:47 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:26:47 :   db_vals = Array
+(
+    [id_match] => 2705
+)
+
+
+11:26:47 :   validation accès
+
+11:26:47 :   ok: admin
+
+11:27:00 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:27:00 :   input stream 
+
+11:27:00 :   vals input stream = 
+
+11:27:00 :   champ ne manque pas: id
+
+11:27:00 :   champ ne manque pas: id_equipe
+
+11:27:00 :   champ ne manque pas: id_membre
+
+11:27:00 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:27:00 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:27:00 :   champ ne manque pas: duree_punition
+
+11:27:00 :   champ ne manque pas: expulsion
+
+11:27:00 :   champ ne manque pas: codes_punition
+
+11:27:00 :   champ ne manque pas: but
+
+11:27:00 :   champ ne manque pas: but_special
+
+11:27:00 :   champ ne manque pas: but_propre_filet
+
+11:27:00 :   champ ne manque pas: id_membre_passe
+
+11:27:00 :   champ ne manque pas: id_membre_passe2
+
+11:27:00 :   champ ne manque pas: passe_propre_filet
+
+11:27:00 :   champ ne manque pas: commentaire
+
+11:27:00 :   champ ne manque pas: id_membre_gardien
+
+11:27:00 :   champ ne manque pas: resultat
+
+11:27:00 :   champ ne manque pas: resultat_adversaire
+
+11:27:00 :   champ ne manque pas: avantage_numerique
+
+11:27:00 :   champ ne manque pas: changement_gardien
+
+11:27:00 :   champ ne manque pas: gardien1
+
+11:27:00 :   champ ne manque pas: gardien2
+
+11:27:00 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:27:00 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+11:27:00 :   validation accès
+
+11:27:00 :   ok: admin
+
+11:27:00 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+11:27:14 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+11:27:14 :   input stream 
+
+11:27:14 :   vals input stream = 
+
+11:27:14 :   champ ne manque pas: id
+
+11:27:14 :   champ ne manque pas: id_equipe
+
+11:27:14 :   champ ne manque pas: id_membre
+
+11:27:14 :   Champ ********************************* periode manquant pour règle unsigned
+
+11:27:14 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+11:27:14 :   champ ne manque pas: duree_punition
+
+11:27:14 :   champ ne manque pas: expulsion
+
+11:27:14 :   champ ne manque pas: codes_punition
+
+11:27:14 :   champ ne manque pas: but
+
+11:27:14 :   champ ne manque pas: but_special
+
+11:27:14 :   champ ne manque pas: but_propre_filet
+
+11:27:14 :   champ ne manque pas: id_membre_passe
+
+11:27:14 :   champ ne manque pas: id_membre_passe2
+
+11:27:14 :   champ ne manque pas: passe_propre_filet
+
+11:27:14 :   champ ne manque pas: commentaire
+
+11:27:14 :   champ ne manque pas: id_membre_gardien
+
+11:27:14 :   champ ne manque pas: resultat
+
+11:27:14 :   champ ne manque pas: resultat_adversaire
+
+11:27:14 :   champ ne manque pas: avantage_numerique
+
+11:27:14 :   champ ne manque pas: changement_gardien
+
+11:27:14 :   champ ne manque pas: gardien1
+
+11:27:14 :   champ ne manque pas: gardien2
+
+11:27:14 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+11:27:14 :   db_vals = Array
+(
+    [id_match] => 2708
+)
+
+
+11:27:14 :   validation accès
+
+11:27:14 :   ok: admin
+
+11:27:14 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+14:26:32 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [275] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [279] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+        )
+
+)
+
+
+14:26:32 :   
+                INSERT IGNORE INTO match_joueurs
+                (id_match, id_equipe, id_joueur, position, no_chandail, marque)
+                VALUES
+                (2705, 275, 7441, -1, NULL, 0),(2705, 275, 6774, -1, NULL, 0),(2705, 275, 8089, -1, NULL, 0),(2705, 275, 5953, 2, NULL, 0),(2705, 275, 4792, -1, NULL, 0),(2705, 275, 7211, -1, NULL, 0),(2705, 275, 7678, -1, NULL, 0)
+                ON DUPLICATE KEY UPDATE
+                    cote = IF(position <> VALUES(position), NULL, cote),
+                    groupe = IF(position <> VALUES(position), NULL, groupe),
+                    position = VALUES(position),
+                    no_chandail = VALUES(no_chandail),
+                    marque = 0
+            
+
+15:31:49 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [274] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [286] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+        )
+
+)
+
+
+15:32:02 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [274] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [286] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+        )
+
+)
+
+
+15:39:07 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [274] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [286] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+        )
+
+)
+
+
+15:39:13 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [274] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [286] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+        )
+
+)
+
+
+15:43:23 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [274] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [286] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+        )
+
+)
+
+
+15:43:23 :   
+                INSERT IGNORE INTO match_joueurs
+                (id_match, id_equipe, id_joueur, position, no_chandail, marque)
+                VALUES
+                (2706, 274, 4839, -1, NULL, 0),(2706, 274, 4873, -1, NULL, 0),(2706, 274, 4846, -1, NULL, 0),(2706, 274, 4684, 2, NULL, 0),(2706, 274, 4920, -1, NULL, 0),(2706, 274, 4822, -1, NULL, 0),(2706, 274, 4903, -1, NULL, 0),(2706, 286, 4869, -1, NULL, 0),(2706, 286, 4737, -1, NULL, 0),(2706, 286, 4809, -1, NULL, 0),(2706, 286, 4872, 2, NULL, 0),(2706, 286, 4875, -1, NULL, 0),(2706, 286, 4851, -1, NULL, 0)
+                ON DUPLICATE KEY UPDATE
+                    cote = IF(position <> VALUES(position), NULL, cote),
+                    groupe = IF(position <> VALUES(position), NULL, groupe),
+                    position = VALUES(position),
+                    no_chandail = VALUES(no_chandail),
+                    marque = 0
+            
+
+15:43:48 :   aaaaaaaaaaaaaaa
+
+15:43:48 :   ......................
+
+15:44:02 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+15:44:02 :   input stream 
+
+15:44:02 :   vals input stream = 
+
+15:44:02 :   champ ne manque pas: id
+
+15:44:02 :   champ ne manque pas: id_equipe
+
+15:44:02 :   champ ne manque pas: id_membre
+
+15:44:02 :   Champ ********************************* periode manquant pour règle unsigned
+
+15:44:02 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+15:44:02 :   champ ne manque pas: duree_punition
+
+15:44:02 :   champ ne manque pas: expulsion
+
+15:44:02 :   champ ne manque pas: codes_punition
+
+15:44:02 :   champ ne manque pas: but
+
+15:44:02 :   champ ne manque pas: but_special
+
+15:44:02 :   champ ne manque pas: but_propre_filet
+
+15:44:02 :   champ ne manque pas: id_membre_passe
+
+15:44:02 :   champ ne manque pas: id_membre_passe2
+
+15:44:02 :   champ ne manque pas: passe_propre_filet
+
+15:44:02 :   champ ne manque pas: commentaire
+
+15:44:02 :   champ ne manque pas: id_membre_gardien
+
+15:44:02 :   champ ne manque pas: resultat
+
+15:44:02 :   champ ne manque pas: resultat_adversaire
+
+15:44:02 :   champ ne manque pas: avantage_numerique
+
+15:44:02 :   champ ne manque pas: changement_gardien
+
+15:44:02 :   champ ne manque pas: gardien1
+
+15:44:02 :   champ ne manque pas: gardien2
+
+15:44:02 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+15:44:02 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+15:44:02 :   validation accès
+
+15:44:02 :   ok: admin
+
+15:44:02 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+15:45:17 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+15:45:17 :   input stream {"type_enreg":"fin_periode","periode":2,"id_match":"2706","chrono":"22:00"}
+
+15:45:17 :   vals input stream = Array
+(
+    [type_enreg] => fin_periode
+    [periode] => 2
+    [id_match] => 2706
+    [chrono] => 22:00
+)
+
+
+15:45:17 :   champ ne manque pas: id
+
+15:45:17 :   champ ne manque pas: id_equipe
+
+15:45:17 :   champ ne manque pas: id_membre
+
+15:45:17 :   champ ne manque pas: duree_punition
+
+15:45:17 :   champ ne manque pas: expulsion
+
+15:45:17 :   champ ne manque pas: codes_punition
+
+15:45:17 :   champ ne manque pas: but
+
+15:45:17 :   champ ne manque pas: but_special
+
+15:45:17 :   champ ne manque pas: but_propre_filet
+
+15:45:17 :   champ ne manque pas: id_membre_passe
+
+15:45:17 :   champ ne manque pas: id_membre_passe2
+
+15:45:17 :   champ ne manque pas: passe_propre_filet
+
+15:45:17 :   champ ne manque pas: commentaire
+
+15:45:17 :   champ ne manque pas: id_membre_gardien
+
+15:45:17 :   champ ne manque pas: resultat
+
+15:45:17 :   champ ne manque pas: resultat_adversaire
+
+15:45:17 :   champ ne manque pas: avantage_numerique
+
+15:45:17 :   champ ne manque pas: changement_gardien
+
+15:45:17 :   champ ne manque pas: gardien1
+
+15:45:17 :   champ ne manque pas: gardien2
+
+15:45:17 :   
+                    SELECT COUNT(IF(type_enreg = 'fin_periode', 1, NULL)) nb_fins_per,
+                        max(chrono) chrono
+                    FROM match_feuille
+                    WHERE id_match = 2706
+                    AND periode = 2
+                    AND 1
+                
+
+15:45:17 :   db_vals = Array
+(
+    [id_match] => 2706
+    [periode] => 2
+    [chrono] => 22:00
+    [type_enreg] => fin_periode
+)
+
+
+15:45:17 :   validation accès
+
+15:45:17 :   ok: admin
+
+15:45:17 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+16:05:04 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+16:05:04 :   input stream 
+
+16:05:04 :   vals input stream = 
+
+16:05:04 :   champ ne manque pas: id_equipe
+
+16:05:04 :   champ ne manque pas: id_membre
+
+16:05:04 :   Champ ********************************* periode manquant pour règle unsigned
+
+16:05:04 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+16:05:04 :   champ ne manque pas: duree_punition
+
+16:05:04 :   champ ne manque pas: expulsion
+
+16:05:04 :   champ ne manque pas: codes_punition
+
+16:05:04 :   champ ne manque pas: but
+
+16:05:04 :   champ ne manque pas: but_special
+
+16:05:04 :   champ ne manque pas: but_propre_filet
+
+16:05:04 :   champ ne manque pas: id_membre_passe
+
+16:05:04 :   champ ne manque pas: id_membre_passe2
+
+16:05:04 :   champ ne manque pas: passe_propre_filet
+
+16:05:04 :   champ ne manque pas: commentaire
+
+16:05:04 :   champ ne manque pas: id_membre_gardien
+
+16:05:04 :   champ ne manque pas: resultat
+
+16:05:04 :   champ ne manque pas: resultat_adversaire
+
+16:05:04 :   champ ne manque pas: avantage_numerique
+
+16:05:04 :   champ ne manque pas: changement_gardien
+
+16:05:04 :   champ ne manque pas: gardien1
+
+16:05:04 :   champ ne manque pas: gardien2
+
+16:05:04 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+16:05:04 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+16:05:04 :   validation accès
+
+16:05:04 :   ok: admin
+
+16:05:11 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+16:05:11 :   input stream 
+
+16:05:11 :   vals input stream = 
+
+16:05:11 :   champ ne manque pas: id_equipe
+
+16:05:11 :   champ ne manque pas: id_membre
+
+16:05:11 :   Champ ********************************* periode manquant pour règle unsigned
+
+16:05:11 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+16:05:11 :   champ ne manque pas: duree_punition
+
+16:05:11 :   champ ne manque pas: expulsion
+
+16:05:11 :   champ ne manque pas: codes_punition
+
+16:05:11 :   champ ne manque pas: but
+
+16:05:11 :   champ ne manque pas: but_special
+
+16:05:11 :   champ ne manque pas: but_propre_filet
+
+16:05:11 :   champ ne manque pas: id_membre_passe
+
+16:05:11 :   champ ne manque pas: id_membre_passe2
+
+16:05:11 :   champ ne manque pas: passe_propre_filet
+
+16:05:11 :   champ ne manque pas: commentaire
+
+16:05:11 :   champ ne manque pas: id_membre_gardien
+
+16:05:11 :   champ ne manque pas: resultat
+
+16:05:11 :   champ ne manque pas: resultat_adversaire
+
+16:05:11 :   champ ne manque pas: avantage_numerique
+
+16:05:11 :   champ ne manque pas: changement_gardien
+
+16:05:11 :   champ ne manque pas: gardien1
+
+16:05:11 :   champ ne manque pas: gardien2
+
+16:05:11 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+16:05:11 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+16:05:11 :   validation accès
+
+16:05:11 :   ok: admin
+
+18:23:53 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [274] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [286] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+            [1] => 4684
+            [2] => 4920
+            [3] => 4872
+            [4] => 4846
+            [5] => 4873
+        )
+
+)
+
+
+18:23:53 :   
+                INSERT IGNORE INTO match_joueurs
+                (id_match, id_equipe, id_joueur, position, no_chandail, marque)
+                VALUES
+                (2706, 274, 4839, -1, NULL, 0),(2706, 274, 4873, -1, NULL, 0),(2706, 274, 4846, -1, NULL, 0),(2706, 274, 4684, 2, NULL, 0),(2706, 274, 4920, -1, NULL, 0),(2706, 274, 4822, -1, NULL, 0),(2706, 274, 4903, -1, NULL, 0),(2706, 274, 4801, -1, NULL, 0),(2706, 274, 4833, -1, NULL, 0),(2706, 286, 4869, -1, NULL, 0),(2706, 286, 4737, -1, NULL, 0),(2706, 286, 4872, 2, NULL, 0),(2706, 286, 4875, -1, NULL, 0),(2706, 286, 4851, -1, NULL, 0)
+                ON DUPLICATE KEY UPDATE
+                    cote = IF(position <> VALUES(position), NULL, cote),
+                    groupe = IF(position <> VALUES(position), NULL, groupe),
+                    position = VALUES(position),
+                    no_chandail = VALUES(no_chandail),
+                    marque = 0
+            
+
+18:24:05 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+18:24:05 :   input stream 
+
+18:24:05 :   vals input stream = 
+
+18:24:05 :   champ ne manque pas: id
+
+18:24:05 :   champ ne manque pas: id_equipe
+
+18:24:05 :   champ ne manque pas: id_membre
+
+18:24:05 :   Champ ********************************* periode manquant pour règle unsigned
+
+18:24:05 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+18:24:05 :   champ ne manque pas: duree_punition
+
+18:24:05 :   champ ne manque pas: expulsion
+
+18:24:05 :   champ ne manque pas: codes_punition
+
+18:24:05 :   champ ne manque pas: but
+
+18:24:05 :   champ ne manque pas: but_special
+
+18:24:05 :   champ ne manque pas: but_propre_filet
+
+18:24:05 :   champ ne manque pas: id_membre_passe
+
+18:24:05 :   champ ne manque pas: id_membre_passe2
+
+18:24:05 :   champ ne manque pas: passe_propre_filet
+
+18:24:05 :   champ ne manque pas: commentaire
+
+18:24:05 :   champ ne manque pas: id_membre_gardien
+
+18:24:05 :   champ ne manque pas: resultat
+
+18:24:05 :   champ ne manque pas: resultat_adversaire
+
+18:24:05 :   champ ne manque pas: avantage_numerique
+
+18:24:05 :   champ ne manque pas: changement_gardien
+
+18:24:05 :   champ ne manque pas: gardien1
+
+18:24:05 :   champ ne manque pas: gardien2
+
+18:24:05 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+18:24:05 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+18:24:05 :   validation accès
+
+18:24:05 :   ok: admin
+
+18:24:05 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+18:25:10 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+18:25:10 :   input stream {"id_match":"2706","but":false,"retrait_gardien":null,"chrono":"12:43","periode":1,"id_membre":"4846","type_enreg":"punition","expulsion":false,"id_membre_gardien":null,"gardien1":null,"resultat_ok":"0","gardien2":null,"codes_punition":"31-Assaut; 92-Retarder le jeu","but_propre_filet":false,"fin_retrait_gardien":null,"resultat":0,"fin_periode":false,"duree_punition":6,"changement_gardien":false,"id_membre_passe2":null,"id_equipe":"274","id_membre_passe":null,"avantage_numerique":0,"passe_propre_filet":false,"commentaire":null,"but_special":null,"id":"42940","time_edit":null,"resultat_force":null,"resultat_adversaire":0}
+
+18:25:10 :   vals input stream = Array
+(
+    [id_match] => 2706
+    [but] => 
+    [retrait_gardien] => 
+    [chrono] => 12:43
+    [periode] => 1
+    [id_membre] => 4846
+    [type_enreg] => punition
+    [expulsion] => 
+    [id_membre_gardien] => 
+    [gardien1] => 
+    [resultat_ok] => 0
+    [gardien2] => 
+    [codes_punition] => 31-Assaut; 92-Retarder le jeu
+    [but_propre_filet] => 
+    [fin_retrait_gardien] => 
+    [resultat] => 0
+    [fin_periode] => 
+    [duree_punition] => 6
+    [changement_gardien] => 
+    [id_membre_passe2] => 
+    [id_equipe] => 274
+    [id_membre_passe] => 
+    [avantage_numerique] => 0
+    [passe_propre_filet] => 
+    [commentaire] => 
+    [but_special] => 
+    [id] => 42940
+    [time_edit] => 
+    [resultat_force] => 
+    [resultat_adversaire] => 0
+)
+
+
+18:25:10 :   db_vals = Array
+(
+    [id_match] => 2706
+    [id_equipe] => 274
+    [id_membre] => 4846
+    [periode] => 1
+    [chrono] => 12:43
+    [duree_punition] => 6
+    [expulsion] => 0
+    [codes_punition] => 31-Assaut; 92-Retarder le jeu
+    [but] => 0
+    [but_special] => 
+    [but_propre_filet] => 0
+    [id_membre_passe] => 
+    [id_membre_passe2] => 
+    [passe_propre_filet] => 0
+    [commentaire] => 
+    [id_membre_gardien] => 
+    [resultat] => 0
+    [resultat_adversaire] => 0
+    [changement_gardien] => 0
+    [gardien1] => 
+    [gardien2] => 
+    [type_enreg] => punition
+)
+
+
+18:25:10 :   validation accès
+
+18:25:10 :   ok: admin
+
+18:25:10 :   
+            UPDATE match_feuille
+            SET id_match=2706,id_equipe=274,id_membre=4846,periode=1,chrono='12:43',duree_punition=6,expulsion=0,codes_punition='31-Assaut; 92-Retarder le jeu',but=0,but_special=null,but_propre_filet=0,id_membre_passe=null,id_membre_passe2=null,passe_propre_filet=0,commentaire=null,id_membre_gardien=null,resultat=0,resultat_adversaire=0,changement_gardien=0,gardien1=null,gardien2=null,type_enreg='punition'
+            WHERE id = 42940
+        
+
+18:25:10 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+18:30:15 :   but vilet désert ok
+
+22:15:09 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+22:15:09 :   input stream 
+
+22:15:09 :   vals input stream = 
+
+22:15:09 :   champ ne manque pas: id
+
+22:15:09 :   champ ne manque pas: id_equipe
+
+22:15:09 :   champ ne manque pas: id_membre
+
+22:15:09 :   Champ ********************************* periode manquant pour règle unsigned
+
+22:15:09 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+22:15:09 :   champ ne manque pas: duree_punition
+
+22:15:09 :   champ ne manque pas: expulsion
+
+22:15:09 :   champ ne manque pas: codes_punition
+
+22:15:09 :   champ ne manque pas: but
+
+22:15:09 :   champ ne manque pas: but_special
+
+22:15:09 :   champ ne manque pas: but_propre_filet
+
+22:15:09 :   champ ne manque pas: id_membre_passe
+
+22:15:09 :   champ ne manque pas: id_membre_passe2
+
+22:15:09 :   champ ne manque pas: passe_propre_filet
+
+22:15:09 :   champ ne manque pas: commentaire
+
+22:15:09 :   champ ne manque pas: id_membre_gardien
+
+22:15:09 :   champ ne manque pas: resultat
+
+22:15:09 :   champ ne manque pas: resultat_adversaire
+
+22:15:09 :   champ ne manque pas: avantage_numerique
+
+22:15:09 :   champ ne manque pas: changement_gardien
+
+22:15:09 :   champ ne manque pas: gardien1
+
+22:15:09 :   champ ne manque pas: gardien2
+
+22:15:09 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+22:15:09 :   db_vals = Array
+(
+    [id_match] => 2708
+)
+
+
+22:15:09 :   validation accès
+
+22:15:09 :   ok: admin
+
+22:15:09 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+22:15:20 :   but vilet désert ok
+
+22:15:35 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+22:15:35 :   input stream 
+
+22:15:35 :   vals input stream = 
+
+22:15:35 :   champ ne manque pas: id
+
+22:15:35 :   champ ne manque pas: id_equipe
+
+22:15:35 :   champ ne manque pas: id_membre
+
+22:15:35 :   Champ ********************************* periode manquant pour règle unsigned
+
+22:15:35 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+22:15:35 :   champ ne manque pas: duree_punition
+
+22:15:35 :   champ ne manque pas: expulsion
+
+22:15:35 :   champ ne manque pas: codes_punition
+
+22:15:35 :   champ ne manque pas: but
+
+22:15:35 :   champ ne manque pas: but_special
+
+22:15:35 :   champ ne manque pas: but_propre_filet
+
+22:15:35 :   champ ne manque pas: id_membre_passe
+
+22:15:35 :   champ ne manque pas: id_membre_passe2
+
+22:15:35 :   champ ne manque pas: passe_propre_filet
+
+22:15:35 :   champ ne manque pas: commentaire
+
+22:15:35 :   champ ne manque pas: id_membre_gardien
+
+22:15:35 :   champ ne manque pas: resultat
+
+22:15:35 :   champ ne manque pas: resultat_adversaire
+
+22:15:35 :   champ ne manque pas: avantage_numerique
+
+22:15:35 :   champ ne manque pas: changement_gardien
+
+22:15:35 :   champ ne manque pas: gardien1
+
+22:15:35 :   champ ne manque pas: gardien2
+
+22:15:35 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+22:15:35 :   db_vals = Array
+(
+    [id_match] => 2705
+)
+
+
+22:15:35 :   validation accès
+
+22:15:35 :   ok: admin
+
+22:16:18 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [274] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+            [286] => Array
+                (
+                    [locked] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+            [1] => 4684
+            [2] => 4920
+            [3] => 4872
+            [4] => 4846
+            [5] => 4873
+        )
+
+)
+
+
+22:16:18 :   
+                INSERT IGNORE INTO match_joueurs
+                (id_match, id_equipe, id_joueur, position, no_chandail, marque)
+                VALUES
+                (2706, 274, 4839, -1, NULL, 0),(2706, 274, 4873, -1, NULL, 0),(2706, 274, 4846, -1, NULL, 0),(2706, 274, 4684, 2, NULL, 0),(2706, 274, 4920, -1, NULL, 0),(2706, 274, 4822, -1, NULL, 0),(2706, 274, 4903, -1, NULL, 0),(2706, 274, 4801, -1, NULL, 0),(2706, 286, 4869, -1, NULL, 0),(2706, 286, 4737, -1, NULL, 0),(2706, 286, 4872, 2, NULL, 0),(2706, 286, 4875, -1, NULL, 0),(2706, 286, 4851, -1, NULL, 0)
+                ON DUPLICATE KEY UPDATE
+                    cote = IF(position <> VALUES(position), NULL, cote),
+                    groupe = IF(position <> VALUES(position), NULL, groupe),
+                    position = VALUES(position),
+                    no_chandail = VALUES(no_chandail),
+                    marque = 0
+            
+
+22:19:05 :   joueurs avec stats ou sur fmArray
+(
+    [equipes] => Array
+        (
+            [287] => Array
+                (
+                    [locked] => Array
+                        (
+                            [0] => 7058
+                            [1] => 6778
+                            [2] => 5567
+                            [3] => 8560
+                        )
+
+                )
+
+            [275] => Array
+                (
+                    [locked] => Array
+                        (
+                            [0] => 7441
+                            [1] => 5953
+                        )
+
+                )
+
+        )
+
+    [locked] => Array
+        (
+            [0] => 7441
+            [2] => 6778
+            [3] => 5567
+            [4] => 5953
+            [7] => 8560
+            [17] => 7058
+        )
+
+)
+
+
+22:19:05 :   
+                INSERT IGNORE INTO match_joueurs
+                (id_match, id_equipe, id_joueur, position, no_chandail, marque)
+                VALUES
+                (2708, 275, 7441, -1, NULL, 0),(2708, 275, 6774, -1, NULL, 0),(2708, 275, 8089, -1, NULL, 0),(2708, 275, 5953, 2, NULL, 0),(2708, 275, 4792, -1, NULL, 0),(2708, 275, 7211, -1, NULL, 0),(2708, 275, 7678, -1, NULL, 0),(2708, 287, 8560, 2, NULL, 0),(2708, 287, 7058, -1, NULL, 0),(2708, 287, 6778, -1, NULL, 0),(2708, 287, 5567, -1, NULL, 0)
+                ON DUPLICATE KEY UPDATE
+                    cote = IF(position <> VALUES(position), NULL, cote),
+                    groupe = IF(position <> VALUES(position), NULL, groupe),
+                    position = VALUES(position),
+                    no_chandail = VALUES(no_chandail),
+                    marque = 0
+            
+
+22:19:16 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+22:19:16 :   input stream 
+
+22:19:16 :   vals input stream = 
+
+22:19:16 :   champ ne manque pas: id
+
+22:19:16 :   champ ne manque pas: id_equipe
+
+22:19:16 :   champ ne manque pas: id_membre
+
+22:19:16 :   Champ ********************************* periode manquant pour règle unsigned
+
+22:19:16 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+22:19:16 :   champ ne manque pas: duree_punition
+
+22:19:16 :   champ ne manque pas: expulsion
+
+22:19:16 :   champ ne manque pas: codes_punition
+
+22:19:16 :   champ ne manque pas: but
+
+22:19:16 :   champ ne manque pas: but_special
+
+22:19:16 :   champ ne manque pas: but_propre_filet
+
+22:19:16 :   champ ne manque pas: id_membre_passe
+
+22:19:16 :   champ ne manque pas: id_membre_passe2
+
+22:19:16 :   champ ne manque pas: passe_propre_filet
+
+22:19:16 :   champ ne manque pas: commentaire
+
+22:19:16 :   champ ne manque pas: id_membre_gardien
+
+22:19:16 :   champ ne manque pas: resultat
+
+22:19:16 :   champ ne manque pas: resultat_adversaire
+
+22:19:16 :   champ ne manque pas: avantage_numerique
+
+22:19:16 :   champ ne manque pas: changement_gardien
+
+22:19:16 :   champ ne manque pas: gardien1
+
+22:19:16 :   champ ne manque pas: gardien2
+
+22:19:16 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+22:19:16 :   db_vals = Array
+(
+    [id_match] => 2708
+)
+
+
+22:19:16 :   validation accès
+
+22:19:16 :   ok: admin
+
+22:19:16 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+22:20:22 :   but vilet désert ok
+
+22:20:24 :   but vilet désert ok
+
+00:22:39 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+00:22:39 :   input stream {"id_match":"2708","but":true,"retrait_gardien":null,"chrono":"12:34","periode":1,"id_membre":"6778","type_enreg":"but","expulsion":false,"id_membre_gardien":"5953","gardien1":null,"resultat_ok":"0","gardien2":null,"codes_punition":"","but_propre_filet":false,"fin_retrait_gardien":null,"resultat":1,"fin_periode":false,"duree_punition":null,"changement_gardien":false,"id_membre_passe2":null,"id_equipe":"287","id_membre_passe":"5567","avantage_numerique":0,"passe_propre_filet":false,"commentaire":null,"but_special":null,"id":"42917","time_edit":null,"resultat_force":null,"resultat_adversaire":0}
+
+00:22:39 :   vals input stream = Array
+(
+    [id_match] => 2708
+    [but] => 1
+    [retrait_gardien] => 
+    [chrono] => 12:34
+    [periode] => 1
+    [id_membre] => 6778
+    [type_enreg] => but
+    [expulsion] => 
+    [id_membre_gardien] => 5953
+    [gardien1] => 
+    [resultat_ok] => 0
+    [gardien2] => 
+    [codes_punition] => 
+    [but_propre_filet] => 
+    [fin_retrait_gardien] => 
+    [resultat] => 1
+    [fin_periode] => 
+    [duree_punition] => 
+    [changement_gardien] => 
+    [id_membre_passe2] => 
+    [id_equipe] => 287
+    [id_membre_passe] => 5567
+    [avantage_numerique] => 0
+    [passe_propre_filet] => 
+    [commentaire] => 
+    [but_special] => 
+    [id] => 42917
+    [time_edit] => 
+    [resultat_force] => 
+    [resultat_adversaire] => 0
+)
+
+
+00:22:39 :   db_vals = Array
+(
+    [id_match] => 2708
+    [id_equipe] => 287
+    [id_membre] => 6778
+    [periode] => 1
+    [chrono] => 12:34
+    [duree_punition] => 
+    [expulsion] => 0
+    [codes_punition] => 
+    [but] => 1
+    [but_special] => 
+    [but_propre_filet] => 0
+    [id_membre_passe] => 5567
+    [id_membre_passe2] => 
+    [passe_propre_filet] => 0
+    [commentaire] => 
+    [id_membre_gardien] => 5953
+    [resultat] => 1
+    [resultat_adversaire] => 0
+    [changement_gardien] => 0
+    [gardien1] => 
+    [gardien2] => 
+    [type_enreg] => but
+)
+
+
+00:22:39 :   validation accès
+
+00:22:39 :   ok: admin
+
+00:22:39 :   
+            UPDATE match_feuille
+            SET id_match=2708,id_equipe=287,id_membre=6778,periode=1,chrono='12:34',duree_punition=null,expulsion=0,codes_punition='',but=1,but_special=null,but_propre_filet=0,id_membre_passe=5567,id_membre_passe2=null,passe_propre_filet=0,commentaire=null,id_membre_gardien=5953,resultat=1,resultat_adversaire=0,changement_gardien=0,gardien1=null,gardien2=null,type_enreg='but'
+            WHERE id = 42917
+        
+
+00:22:39 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+
+00:22:53 :   but vilet désert ok
+
+00:22:55 :   but vilet désert ok
+
+15:47:07 :   valid....Array
+(
+    [id] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_match] => unsigned
+    [id_equipe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre] => regex:#^\d*$#;opt;empty_string_to_null
+    [periode] => unsigned
+    [chrono] => regex:#^\d\d:\d\d$#
+    [duree_punition] => regex:#^\d*$#;opt;empty_string_to_null
+    [expulsion] => bool;opt;bool_to_num
+    [codes_punition] => string;opt
+    [but] => bool;opt;bool_to_num
+    [but_special] => regex:#^(|penalite)$#;opt;empty_string_to_null
+    [but_propre_filet] => bool;opt;bool_to_num
+    [id_membre_passe] => regex:#^\d*$#;opt;empty_string_to_null
+    [id_membre_passe2] => regex:#^\d*$#;opt;empty_string_to_null
+    [passe_propre_filet] => bool;opt;bool_to_num
+    [commentaire] => string;max:500;opt
+    [id_membre_gardien] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat] => regex:#^\d*$#;opt;empty_string_to_null
+    [resultat_adversaire] => regex:#^\d*$#;opt;empty_string_to_null
+    [avantage_numerique] => int;min:-1;max:1;opt;empty_string_to_null
+    [changement_gardien] => bool;opt;bool_to_num
+    [gardien1] => regex:#^\d*$#;opt;empty_string_to_null
+    [gardien2] => regex:#^\d*$#;opt;empty_string_to_null
+    [type_enreg] => regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+)
+
+
+15:47:07 :   input stream 
+
+15:47:07 :   vals input stream = 
+
+15:47:07 :   champ ne manque pas: id
+
+15:47:07 :   champ ne manque pas: id_equipe
+
+15:47:07 :   champ ne manque pas: id_membre
+
+15:47:07 :   Champ ********************************* periode manquant pour règle unsigned
+
+15:47:07 :   Champ ********************************* chrono manquant pour règle regex:#^\d\d:\d\d$#
+
+15:47:07 :   champ ne manque pas: duree_punition
+
+15:47:07 :   champ ne manque pas: expulsion
+
+15:47:07 :   champ ne manque pas: codes_punition
+
+15:47:07 :   champ ne manque pas: but
+
+15:47:07 :   champ ne manque pas: but_special
+
+15:47:07 :   champ ne manque pas: but_propre_filet
+
+15:47:07 :   champ ne manque pas: id_membre_passe
+
+15:47:07 :   champ ne manque pas: id_membre_passe2
+
+15:47:07 :   champ ne manque pas: passe_propre_filet
+
+15:47:07 :   champ ne manque pas: commentaire
+
+15:47:07 :   champ ne manque pas: id_membre_gardien
+
+15:47:07 :   champ ne manque pas: resultat
+
+15:47:07 :   champ ne manque pas: resultat_adversaire
+
+15:47:07 :   champ ne manque pas: avantage_numerique
+
+15:47:07 :   champ ne manque pas: changement_gardien
+
+15:47:07 :   champ ne manque pas: gardien1
+
+15:47:07 :   champ ne manque pas: gardien2
+
+15:47:07 :   Champ ********************************* type_enreg manquant pour règle regex:#^(punition|but|changement_gardien|fin_periode|fusillade)$#
+
+15:47:07 :   db_vals = Array
+(
+    [id_match] => 2706
+)
+
+
+15:47:07 :   validation accès
+
+15:47:07 :   ok: admin
+
+15:47:07 :   bool: expulsion, but, but_propre_filet, passe_propre_filet, changement_gardien, fin_periode
+

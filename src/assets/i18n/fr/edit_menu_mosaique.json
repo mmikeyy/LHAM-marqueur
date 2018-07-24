@@ -1,0 +1,13 @@
+{
+  "i18n_ref": "edit_menu_mosaique",
+  "choisir_menu": "Choisir le menu à afficher",
+  "faire_choix": "Faire un choix",
+  "annuler": "Annuler",
+  "accepter": "Accepter",
+  "mauvais_widget": "Tentative de modification d'un élément d'un autre type",
+  "introuvable": "Élément introuvable",
+  "choix_de_menu": "Choix d'un menu",
+  "classe_menu": "Classe du menu",
+  "classe_menu_info": "Chaque classe doit commencer par une lettre, suivie de lettres ou chiffres ou _ ou -. Séparer les classes par un espace s'il y en a plus d'une. Définissez les règles CSS pour cette classe dans les thèmes",
+  "apparence": "Apparence"
+}

@@ -1,0 +1,29 @@
+local:
+  test_hostname: "#^((.*\.)?localhost(:(8080|63344))?|127.0.0.1(:(8080|63344))?)$#"
+  test_choix_db: null
+
+
+  hostname: localhost
+  schema: lham_2018
+  external_schema: braves_2012_10
+  username: mmikeyy
+  password: JvsJjK24MpB2phwq
+
+remote:
+  test_hostname: "#^.*(ahmba.ca)$#"
+  test_choix_db: 0
+
+  hostname: localhost
+  schema: ahmba_2017
+  external_schema: ahmba_main
+  username: ahmba_system
+  password: weTyjlIUhbGRxcjIl78356
+
+remote_loukilou:
+  test_hostname: "#^.*(loukilou.com)$#"
+  test_choix_db: 0
+
+  hostname: localhost
+  schema: loukilo_ahmba
+  username: loukilo_mmikeyy
+  password: testmro248

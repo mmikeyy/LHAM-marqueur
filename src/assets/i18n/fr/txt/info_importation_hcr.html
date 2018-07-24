@@ -1,0 +1,38 @@
+<h3>Processus d'importation dans base de données des membres</h3>
+<h4>Mise à jour existants</h4>
+<p>
+  Les coordonnées (téléphone, courriel) des membres dont le no de HCR est trouvé dans la base
+  de données des membres sont mises à jour avec les données du fichier HCR.
+</p>
+<p>
+  Aucun enregistrement n'est ajouté à la liste des membres.
+</p>
+<h4>
+  Ajout nouveaux
+</h4>
+<p>
+  Les données HCR qui n'ont aucune correspondance dans la liste des membres (en utilisant le no de HCR
+  pour identifier le membre) sont ajoutés à la liste des membres. Les informations sur les parents
+  ne sont pas utilisées. Les membres ajoutés sont donc tous initialement orphelins.
+</p>
+<h4>Orphelins</h4>
+<p>
+  Permet de trouver les parents d'un joueur dans la liste des membres, s'il y est. Les parents
+  existants dans la liste des membres sont proposés comme parent du joueur sont
+</p>
+<ul>
+  <li>
+    ceux qui ont le même nom que le parent inscrit dans le dossier HCR
+  </li>
+  <li>
+    ceux qui ont le même nom de famille que dans le dossier HCR, et le même code postal.
+  </li>
+</ul>
+
+
+<h4>Mise à jour parents</h4>
+<p>
+  Pour chaque parent, affiche côte à côte les coordonnées (téléphone, courriel) de la base de données
+  des membres et celles possiblement mises à jour du fichier HCR. Permet de désigner les
+  informations à transférer de HCR à la liste de mebres les informations jugées les plus à jour.
+</p>

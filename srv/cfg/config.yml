@@ -1,0 +1,148 @@
+langue:
+  bilingue: '0'
+  defaut: fr
+  autre: en
+  fr: Français
+  en: English
+general:
+  page_defaut: '1'
+  titre_defaut: 'Braves d''Ahuntsic'
+  titre_court: AHMBA
+  menu_defaut: 5
+  saison_tableau_ages: '3'
+  login_visiteurs: '1'
+  local_dir: mro_2016
+  courriel_defaut: info@hockeymro.ca
+  courriel_info: info@hockeymro.ca
+  adresse_courriel_test: michelranger1@gmail.com
+  signature: 'L''Association de hockey mineur des Braves d''Ahuntsic'
+  indicateur_contenu_contextuel_format: '<span  style=font-size:10px'
+  msg_contextuel_fr: 'contenu contextuel (%s)'
+  msg_contextuel_en: 'contextual content (%s)'
+  code_client: ahmba
+  site_root: 'http://myApp.localhost'
+  redirection: test/index.php
+  salt: 68eab15449866233fb3
+
+tests:
+  schema: mro_test
+galeries:
+  folder: galeries
+courriels:
+  test_actif: true
+  envoi_auto: false
+  envoi_actif: false
+  ne_pas_repondre: ne_pas_repondre@hockeymro.ca
+  info: info@hockeymro.ca
+  defaut: info@hockeymro.ca
+  test: michelranger1@gmail.com
+  origines_permises:
+    - hockeymro.ca
+    - ccvalois.ca
+    - videotron.ca
+  max_jrs_relache: 15
+  signaler_erreurs: michelranger1@gmail.com
+  lien_retrait: '/exclure_courriel'
+calendrier_matchs:
+  domain: bb4.ahmba.ca
+  courriel: michelranger1@gmail.com
+  mdp: 248micmic
+  timezone: '-05:00'
+  timezone_dst: '-04:00'
+  duree_match: '60'
+  jours_futur: '200'
+  jours_passe: '2'
+  title_model: '{equipe1} / {equipe2} @ {lieu} ({groupe} #{no_match})'
+  content_model: 'Les {equipe1} affrontent les {equipe2} @ {lieu}. Match {groupe}#{no_match}. Note: les {equipe1} ont statut de visiteurs.'
+calendrier_pratiques:
+  url: ''
+horaires:
+  jours_afficher_pratiques: 28
+saisons:
+  inscription: '7'
+  prochaine: -1
+  courante: '7'
+inscription:
+  acces_membre: '1'
+inscription_dern_equipe:
+  divisions_nos_permis: ''
+  divisions_DL_permis: AT;PW;BT;MD;JR
+  divisions_nos_seulem: ''
+  divisions_sans_classe: PN
+mots_de_passe:
+  mdp_1: totos
+  mdp_2: sapfsdf
+assiduite:
+  visible: '0'
+ckfinder:
+  license_name: www.ahmba.ca
+  license_key: HAAW-PPDK-KK57-K7VL-5JMR-VRKZ-XHPX
+  doc_dir: docs
+  file_dir: file
+  image_dir: image
+  inscriptions_essais_dir: ''
+abreviations:
+  equipe_cherche: '#ahuntsic#i'
+  equipe_remplace: ''
+  equipe_cherche_sql: ahuntsic
+noms_equipes:
+  mot_clef_recherche: ahuntsic
+  sql_regex_equipe: '''[[:<:]](braves|bruins|chiefs|hawks)([[:>:]].*tsic| *$)'''
+  sql_regex_une_equipe: '''[[:<:]]%s([[:>:]].*tsic| *$)'''
+  regex_nom: /\b(braves|bruins|chiefs|hawks)\b/i
+  std:
+    - Devils
+    - Diables
+    - Demons
+    - Pré-Novice
+    - Eagles
+    - Falcons
+    - Hawks
+tableau_ages:
+  height_fr: '500'
+  width_fr: '474'
+widget_contacts_equipe:
+  forcer_en_saison: '0'
+  forcer_hors_saison: '0'
+  forcer_en_saison_admin: '0'
+  forcer_hors_saison_admin: '0'
+  forcer_en_saison_super: '0'
+  forcer_hors_saison_super: '0'
+widget_tableaux_resultats:
+  forcer_en_saison: '0'
+  forcer_hors_saison: '0'
+  forcer_en_saison_admin: '0'
+  forcer_hors_saison_admin: '0'
+  forcer_en_saison_super: '1'
+  forcer_hors_saison_super: '0'
+widget_liste_joueurs:
+  forcer_en_saison: '0'
+  forcer_hors_saison: '0'
+  forcer_en_saison_admin: '0'
+  forcer_hors_saison_admin: '0'
+  forcer_en_saison_super: '0'
+  forcer_hors_saison_super: '0'
+popup:
+  debut: '2011-07-01'
+  fin: '2011-08-19'
+  fichier: documents/images/Promo.jpg
+dst:
+  2014: '2014-03-09,2014-11-02'
+  2015: '2015-03-08,2015-11-01'
+  2016: '2016-03-13,2016-11-06'
+  2017: '2017-03-12,2017-11-05'
+  2018: '2018-03-11,2018-11-04'
+  2019: '2019-03-10,2019-11-03'
+LK_config:
+  reverse_upload: '1'
+  css_seed: '6'
+
+matchs:
+  duree: 90
+  duree_periodes: 22:00
+  nb_periodes: 3
+  pts_forfait_gagnant: 1
+  pts_forfait_perdant: 0
+  temps_punitions: '3,6,10,12,15'
+  temps_punitions_avantage_num: '3,6'
+  temps_punitions_annulees_par_but: 5

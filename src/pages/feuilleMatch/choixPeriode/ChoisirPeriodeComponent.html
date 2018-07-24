@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Match #{{ $idMatch | async}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="refresh()"><ion-icon name="refresh"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="max-width: 650px; margin: auto">
+    <ion-list>
+      <button text-center ion-item *ngFor="let p of periodes" (click)="choisir(p)">Période {{p}}</button>
+      <button text-center ion-item *ngIf="fusilladeExiste" (click)="choisir('fusillade')">Fusillade</button>
+      <button text-center ion-item (click)="ajouter(nouvPeriode())" icon-start *ngIf="editable"><ion-icon name="add"></ion-icon> Ajouter période {{nouvPeriode()}}</button>
+
+      <ng-container *ngIf="!fusilladeExiste && editable">
+        <ion-item></ion-item>
+        <ion-item text-center>
+          <button ion-button icon-start><ion-icon name="add"></ion-icon>Ajouter une fusillade</button>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+  </div>
+</ion-content>
+

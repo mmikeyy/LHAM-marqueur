@@ -1,0 +1,19 @@
+{
+  "i18n_ref": "classement_ps",
+  "retour": "Retour",
+  "classements_ps": "Classements PS",
+  "champs_classement_ps": "Champs tableaux classement PS",
+  "titre": "Titre",
+  "tooltip": "Tooltip",
+  "fr": "Français",
+  "en": "Anglais",
+  "champ": "Champ",
+  "rang": "Rang",
+  "champ_ps": "Champ PS",
+  "rafraichir": "Rafraîchir",
+  "completer": "Compléter",
+  "sauvegarder": "Sauvegarder",
+  "efface": "Effacé",
+  "ordonner": "Ordonner affichage",
+  "changer_ordre": "Changer l'ordre"
+}

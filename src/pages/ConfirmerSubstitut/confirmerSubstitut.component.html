@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Ajouter {{sugg('nom')}}?</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <div *ngIf="sugg('date_naissance')">Né le {{sugg('date_naissance')}}</div>
+      <div *ngIf="sugg('courriel')">{{sugg('courriel')}}</div>
+      <div *ngIf="sugg('cell')">{{sugg('cell')}}</div>
+
+    </ion-item>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        Matchs dans les 30 derniers jours:
+      </ion-item-divider>
+      <ion-item *ngFor="let match of sugg('matchs_recents')">
+
+        Match #{{match.id}} <br>
+        {{match.date}} - {{match.lieu}}
+
+      </ion-item>
+      <ion-item *ngIf="sugg('matchs_recents').length == 0">Aucun</ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        Matchs par saison
+      </ion-item-divider>
+      <ion-item *ngFor="let s of sugg('compte_matchs_saisons')">
+        {{s.nom_saison}}: {{s.nb}} matchs
+      </ion-item>
+      <ion-item *ngIf="sugg('compte_matchs_saisons').length == 0">Aucun match</ion-item>
+    </ion-item-group>
+
+    <!--<ion-header>Matchs par saison</ion-header>-->
+    <!--<ion-item>aucun</ion-item>-->
+    <button ion-item text-center (click)="ajouter()" color="dark" full><ion-icon name="add"></ion-icon> Ajouter </button>
+  </ion-list>
+
+
+
+
+
+</ion-content>

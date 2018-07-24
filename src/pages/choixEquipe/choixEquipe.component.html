@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Choix des joueurs - Match #{{idMatch}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <div style="max-width: 650px; margin: auto">
+    <ion-list *ngIf="joueursServ.valid">
+      <ion-list-header color="light" text-center>
+        Choisissez une équipe
+      </ion-list-header>
+
+      <ng-container *ngFor="let e of eq">
+        <button ion-item text-center (click)="choisir(e.id)" *ngIf="!e.forfait || compte(e.id)">{{e.nom}}
+          <span *ngIf="joueursServ.joueurs.length">({{ compte(e.id) }} joueurs
+            <span *ngIf="!e.forfait && !gardienDesigne(e.id)" style="color: red"> - pas de gardien!</span>
+            <span *ngIf="e.forfait && compte(e.id)" style="color: red"><ion-icon name="warning"></ion-icon> perdu par forfait; aucun joueur permis!</span>
+            )
+          </span>
+        </button>
+        <ion-item *ngIf="e.forfait && !compte(e.id)" text-center style="opacity: .6">{{e.nom}} <br>(forfait: pas de joueurs)</ion-item>
+
+      </ng-container>
+
+      <ion-item></ion-item>
+      <button color="default" text-center ion-item *ngIf="joueursServ.joueurs.length" (click)="soumettre()" icon-start>
+        <ion-icon name="checkmark"></ion-icon>
+        Soumettre
+      </button>
+    </ion-list>
+    <ion-item *ngIf="!joueursServ.valid" text-center>
+      Un instant s.v.p. <ion-icon name="timer"></ion-icon>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ng-template #ff >
+  <ion-item> perdu par forfait</ion-item>
+</ng-template>

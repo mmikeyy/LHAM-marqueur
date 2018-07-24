@@ -1,0 +1,48 @@
+aaaOptions +FollowSymlinks
+Options -Indexes
+RewriteEngine on
+
+<FilesMatch "^.*\.(yml|ini)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+FileETag INode MTime Size
+
+RewriteRule ^(.*)--v\d+\.(css|js|jpg|png|ect)$ $1.$2 [L]
+
+RewriteRule ^inconnu\.html$  allo_toto.php [L]
+RewriteRule ^membre(/(\d*))?$ ./PHP/process_request.php?context=model_membre&op=crud&id=$2 [L]
+RewriteRule ^gestion_membres(/S(\d+))?(/D(\d+))?(/(\d*))?$ ./PHP/process_request.php?context=model_gestion_membres&op=crud&id_saison=$2&id_division=$4&id=$6 [L]
+RewriteRule ^membre/E(\d+)(/(\d*))?$ ./PHP/process_request.php?context=model_membre_equipe&op=crud&id_equipe=$1&id=$3 [L]
+RewriteRule ^equipe(/S(\d+))?(/D(\d+))?(/C(\d+))?(/(\d*))?$ ./PHP/process_request.php?context=model_equipe&op=crud&saison=$2&div=$4&cl=$6&id=$8 [L]
+RewriteRule ^dj(/S(\d+))?(/D(\d+))?(/E(\d+))?(/(\d*))?$ ./PHP/process_request.php?context=model_dossier_joueur&op=crud&id_saison=$2&id_division=$4&id_equipe=$6&id=$8 [L]
+RewriteRule ^joueur_equipe(/S(\d+))?(/E(\d+))?(/(\d*))?$ ./PHP/process_request.php?context=model_joueur_equipe&op=crud&id_saison=$2&id_equipe=$4&id=$6 [L]
+RewriteRule ^(niveau|arena|classe|division|ehl|stats_match|mode_paiement)(/([^\d/]{2,}))?(/D(\d+))?(/(\d*))?$ ./PHP/process_request.php?context=model_$1&op=crud&id=$7&get_info=$3&division=$5 [L]
+RewriteRule ^(stats_match)(/D(\d\d\d\d-\d\d-\d\d))?(/F(\d\d\d\d-\d\d-\d\d))?$ ./PHP/process_request.php?context=model_$1&op=crud&debut_periode=$3&fin_periode=$5 [L]
+RewriteRule ^niveau/D(\d+)(/(\d*))?$ ./PHP/process_request.php?context=model_niveau&op=crud&division=$1&id=$3 [L]
+RewriteRule ^(horaire_marqueur_specifique|periode_horaire_hebdo)/(\d+)(/(\d+))?$ ./PHP/process_request.php?context=model_$1&op=crud&id=$4&id_membre=$2 [L]
+RewriteRule ^dispo_periode(/P(\d+))?(/(\d+))?$ ./PHP/process_request.php?context=model_dispo_periode&op=crud&id=$4&periode=$2 [L]
+RewriteRule ^(std_punitions|glaces|rev_dep|tournois|organisation|editeur|pub_clients|saison|niveau_saison)(/(\d*))?$ ./PHP/process_request.php?context=model_$1&op=crud&id=$3 [L]
+RewriteRule ^(equipe_tournoi|groupes_matchs_tournoi)(/T(\d+))?(/E(\d+))?(/(\d*))?$ ./PHP/process_request.php?context=model_$1&op=crud&id=$7&T=$3&E=$5 [L]
+
+RewriteCond %{HTTP_REFERER} ^.* [NC]
+RewriteRule ^/feuille_match/(\d+)(/(\d+))?$ ./PHP/process_request.php?context=model_feuille_match&op=crud&id_match=$1&id=$3 [L]
+RewriteRule ^imprimer_fm/(\d+)/(\d+)$ ./PHP/process_request.php?context=gestion_alignement&op=imprimer&id_match=$1&id_equipe=$2 [L]
+RewriteRule ^feuille_marqueur/(\d+)$ ./PHP/feuille_de_match.php?ref=$1 [L]
+RewriteRule ^marqueur$ ./marqueur.php [L]
+RewriteRule ^eq/(\d+)$ ./index.php?type=eq&val=$1 [L]
+RewriteRule ^eq-(\d+)$ ./index.php?type=eq&val=$1 [L]
+RewriteRule ^match-(\d+)(j(\d+))?$ ./index.php?type=fm&val=$1&highlight=$3 [L]
+RewriteRule ^pj-(\d+)?$ ./index.php?type=pj&val=$1 [L]
+RewriteRule ^photo-(\d+)$ ./photos_joueurs/photo.php?id=$1 [L]
+RewriteRule ^photo_g-(\d+)$ ./photos_joueurs/photo_groupe.php?id=$1 [L]
+RewriteRule ^photo_g-(\d+)-(\d+)$ ./photos_joueurs/photo_groupe_crop.php?id=$1&id_membre=$2 [L]
+RewriteRule ^photo_g_tn-(\d+)$ ./photos_joueurs/photo_groupe.php?id=$1&tn=1 [L]
+
+RewriteRule ^photo_eq-(\d+)$ ./photos_joueurs/photo_eq.php?id=$1 [L]
+RewriteRule ^photo_eq_tn-(\d+)$ ./photos_joueurs/photo_eq.php?id=$1&tn=1 [L]
+
+
+RewriteRule ^conf_inscr/([a-fA-F0-9]+)$ ./PHP/process_request.php?context=gestion_inscriptions&op=confirmer_inscription&code=$1 [L]
+RewriteRule ^pub$ ./pub.php [L]
+RewriteRule ^crop/(\d+)(/mode=([a-z_]+))?$ ./PHP/crop.php?id_membre=$1&mode=$3

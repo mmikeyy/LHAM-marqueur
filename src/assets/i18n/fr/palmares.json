@@ -1,0 +1,37 @@
+{
+  "i18n_ref": "palmares",
+  "palmares_meilleures_eq": "Palmares des meilleurs classements",
+  "equipe": "Équipe",
+  "position1": "Premières de leur catégorie",
+  "position2": "Deuxièmes de leur catégorie",
+  "position3": "Troisièmes de leur catégorie",
+  "flds": {
+    "rank": {
+      "title": "Rang"
+    },
+    "nom": {
+      "title": "Équipe"
+    },
+    "played": {
+      "title": "PJ",
+      "tt": "Parties jouées"
+    },
+    "vnd": {
+      "title": "V-N-D",
+      "tt": "Victories-Nulles-Défaites"
+    },
+    "goalsFor": {
+      "title": "BP",
+      "tt": "Buts pour"
+    },
+    "goalsAgainst": {
+      "title": "BC",
+      "tt": "Buts contre"
+    },
+    "moyen": {
+      "title": "Moy.",
+      "tt": "Moyenne"
+    }
+  },
+  "aucune_eq": "Aucune équipe"
+}

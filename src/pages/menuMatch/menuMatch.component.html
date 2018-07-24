@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center="true">Menu match #{{$idMatch | async}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <div style="max-width: 650px; margin: auto">
+    <ion-list inset *ngIf="mode === 'menu'">
+
+      <!--<button ion-item text-center (click)="afficherJoueurs()">Afficher joueurs</button>-->
+      <button ion-item text-center (click)="choixEquipeJoueurs()" icon-end>Choix des joueurs
+        <ion-icon name="people"></ion-icon>
+      </button>
+      <button ion-item text-center (click)="feuilleMatchChoixPeriode()" icon-end *ngIf="!isForfait">Feuille de match
+        <ion-icon name="clipboard"></ion-icon>
+      </button>
+      <ion-item text-center text-wrap *ngIf="isForfait" style="opacity: .6">[Pas de feuille de match pour victoire par forfait]</ion-item>
+      <button ion-item text-center icon-end (click)="forfait()">Victoire par forfait
+        <ion-icon [name]="isForfait ? 'thumbs-down' : 'thumbs-up'"></ion-icon>
+      </button>
+      <button ion-item text-center icon-end *ngIf="isResults && !isForfait" (click)="effacerResultats()"
+      >Effacer résultats
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-item text-center icon-end (click)="collecterStats()" *ngIf="!isForfait">
+        {{stats_ok ? 'Statistiques' : 'Match terminé - Collecter stats'}}f
+                <ion-icon name="trophy"></ion-icon>
+      </button>
+      <ion-item text-center text-wrap *ngIf="isForfait" style="opacity: .6">
+        [Pas de stats pour victoire par forfait]
+      </ion-item>
+    </ion-list>
+    <ion-list inset *ngIf="mode === 'choix_collecter_stats'" text-wrap>
+      <ion-list-header color="light" text-center>
+        Les statistiques ont déjà été colligées pour ce match.
+      </ion-list-header>
+      <button ion-item icon-start (click)="effacerStats()" text-center><ion-icon name="trash"></ion-icon>Les effacer</button>
+      <button ion-item icon-start (click)="collecterStats(true)" text-center><ion-icon name="checkmark"></ion-icon>Les colliger à nouveau</button>
+      <button ion-item icon-start (click)="mode = 'menu'" text-center><ion-icon name="arrow-back"></ion-icon>Annuler</button>
+    </ion-list>
+  </div>
+
+</ion-content>

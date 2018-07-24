@@ -1,0 +1,22 @@
+{
+  "name": "vendor_name/package_name",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "config": {
+    "vendor-dir": "srv/PHP/vendor"
+  },
+  "require": {
+    "cymapgt/phpass": "6.0.0",
+    "anahkiasen/underscore-php": "2.0.0",
+    "bes/mobiledetect-twig-extension": "v1.0.3",
+    "mustangostang/spyc": "0.6.2",
+    "phamda/phamda": "0.7.0"
+  }
+}

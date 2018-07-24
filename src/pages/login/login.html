@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center="true">Ouverture session</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+
+  <div *ngIf="!($idVisiteur | async); else loginTemplate">
+    <ion-list [formGroup]="form">
+      <ion-item>
+        <ion-label>Nom d'usager: </ion-label>
+        <ion-input type="text" [formControlName]="'userName'"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mot de passe: </ion-label>
+        <ion-input type="password" [formControlName]="'pw'"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <button ion-button (click)="login()" [disabled]="!form.valid">OK</button>
+
+  </div>
+  <ng-template #loginTemplate>
+    <div style="margin: 2em 0; text-align: center">{{$nomVisiteur | async}}</div>
+    <div style="text-align: center">
+      <button ion-button (click)="logout()">Déconnexion</button>
+    </div>
+  </ng-template>
+  <p>nom: {{form.controls['userName'].value}}; pw: {{pw}}</p>
+  <p>id = {{!!($idVisiteur | async) ? 'oui' : 'non'}}</p>
+  <p>{{growl.msgs | json }}</p>
+</ion-content>
